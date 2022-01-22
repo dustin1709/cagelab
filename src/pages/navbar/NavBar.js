@@ -3,7 +3,7 @@ import logo from './logo.png';
 
 const NavBar = () => {
     return (
-        <div className="d-flex flex-column flex-shrink-0 p-3 text-white" style={{width: '280px', backgroundColor: 'orange'}}>
+        <div className="d-flex flex-column flex-shrink-0 p-3 text-white" style={{width: '280px', backgroundColor: '#F29441'}}>
             <img src={logo} alt="Logo" width="55%" />
             <hr/>
             <ul className="nav nav-pills flex-column mb-auto">
