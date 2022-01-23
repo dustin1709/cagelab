@@ -23,6 +23,22 @@ main {
   overflow-y: hidden;
 }
 
+.MyNavBar {
+  width: 20%;
+}
+
+.mainContainerRight {
+  width: 80%;
+}
+
+.HomeRight {
+  float: right;
+}
+
+.HomeLeft {
+  float: left;
+}
+
 .outer {
   display: flex;
   justify-content: center;

@@ -2,6 +2,9 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './pages/login/login';
 import Layout from './pages/LayOut';
 import Home from './pages/userindex/Home';
+import Search from './pages/usersearch/Search';
+import Reservation from './pages/reservation/Reservation';
+import Cart from './pages/shoppingcart/Cart';
 
 function App() {
   return (
@@ -10,6 +13,9 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/reservation" element={<Reservation />} />
+          <Route path="/cart" element={<Cart />} />
         </Route>
       </Routes>
     </div>
