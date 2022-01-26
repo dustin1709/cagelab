@@ -32,6 +32,14 @@ const NavBar = () => {
                         Kit
                     </NavLink>
                 </li>
+
+                <li class="mb-1">
+                    <button style={{position: 'absolute', bottom: '0', marginBottom: '3%', marginLeft: '5.5%'}} 
+                    type="button" 
+                    className="btn btn-light">
+                        Log out
+                    </button>
+                </li>
             </ul>
         </div>
     )
