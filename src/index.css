@@ -87,3 +87,7 @@ main {
 .spaceInBetween {
   padding: 2%;
 }
+
+.HideThisOne {
+  display: none;
+}
