@@ -22,7 +22,7 @@ const Home = () => {
           </div>
 
           <div style={{margin: '2%'}}>
-            <div className='HomeLeft' style={{backgroundColor: '#e6e6e6', width: '49%', padding: '1%'}}>
+            <div className='HomeLeft'>
               <h5 style={{textAlign: 'center'}}>My Reservation</h5>
               <Link style={{
                 textDecoration: 'none', color: 'white', background: '#8a8a8a',
@@ -30,7 +30,7 @@ const Home = () => {
               }} to="/reservation">View Details</Link>
             </div>
 
-            <div className='HomeRight' style={{backgroundColor: '#e6e6e6', width: '49%', padding: '1%'}}>
+            <div className='HomeRight'>
               <h5 style={{textAlign: 'center'}}>My Shopping Cart</h5>
               <Link style={{
                 textDecoration: 'none', color: 'white', background: '#8a8a8a',

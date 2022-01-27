@@ -33,10 +33,16 @@ main {
 
 .HomeRight {
   float: right;
+  background-color: #e6e6e6; 
+  width: 49%; 
+  padding: 1%;
 }
 
 .HomeLeft {
   float: left;
+  background-color: #e6e6e6; 
+  width: 49%; 
+  padding: 1%;
 }
 
 .outer {
@@ -90,4 +96,12 @@ main {
 
 .HideThisOne {
   display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .HomeLeft, .HomeRight {
+    clear: both;
+    margin-bottom: 1.5%;
+    width: 100%;
+  }
 }
