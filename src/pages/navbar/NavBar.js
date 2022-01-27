@@ -23,27 +23,27 @@ const NavBar = () => {
             <ul className="nav nav-pills flex-column mb-auto">
                 <li>
                     <NavLink to="/dashboard" activeclassname="active" className="nav-link text-white">
-                        {isMobile ? FaIcons.FaHome :  'Dashboard'}
+                        {isMobile ? FaIcons.FaHome :  <><FaIcons.FaHome /> Dashboard</>}
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to="/search" activeclassname="active" className="nav-link text-white">
-                        {isMobile ? FaIcons.FaSearch :  'Search'}
+                        {isMobile ? FaIcons.FaSearch :  <><FaIcons.FaSearch /> Search</>}
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to="/reservation" activeclassname="active" className="nav-link text-white">
-                        {isMobile ? FaIcons.FaCalendar :  'Reservation'}
+                        {isMobile ? FaIcons.FaCalendar :  <><FaIcons.FaCalendar /> Reservation</>}
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to="/cart" activeclassname="active" className="nav-link text-white">
-                        {isMobile ? FaIcons.FaShoppingCart :  'Shopping Cart'}
+                        {isMobile ? FaIcons.FaShoppingCart :  <><FaIcons.FaShoppingCart /> Shopping Cart</>}
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to="/kit" activeclassname="active" className="nav-link text-white">
-                        {isMobile ? FaIcons.FaBriefcase :  'Kit'}
+                        {isMobile ? FaIcons.FaBriefcase :  <><FaIcons.FaBriefcase /> Kit</>}
                     </NavLink>
                 </li>
                 <div style={{padding: '5%', clear: 'both'}}></div>

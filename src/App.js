@@ -5,6 +5,7 @@ import Home from './pages/userindex/Home';
 import Search from './pages/usersearch/Search';
 import Reservation from './pages/reservation/Reservation';
 import Cart from './pages/shoppingcart/Cart';
+import Kit from './pages/kit/Kit';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/kit" element={<Kit />} />
         </Route>
       </Routes>
     </div>
