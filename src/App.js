@@ -6,6 +6,7 @@ import Search from './pages/usersearch/Search';
 import Reservation from './pages/reservation/Reservation';
 import Cart from './pages/shoppingcart/Cart';
 import Kit from './pages/kit/Kit';
+import SearchResults from './pages/usersearch/SearchResults';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Home />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/search/results" element={<SearchResults />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/kit" element={<Kit />} />
