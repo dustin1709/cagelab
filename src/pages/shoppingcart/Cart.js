@@ -6,7 +6,8 @@ const Cart = () => {
     <>
         <NavBar />
         <div className='mainContainerRight'>
-
+          <h3 className='pageTitle'>Shopping Cart</h3>
+          
         </div>
     </>
   );
