@@ -4,9 +4,10 @@ import Home from "./pages/userindex/Home";
 import Search from "./pages/usersearch/Search";
 import Reservation from "./pages/reservation/Reservation";
 import Cart from "./pages/shoppingcart/Cart";
+import Checkout from "./pages/shoppingcart/Checkout";
+import OrderConfirmation from "./pages/shoppingcart/OrderConfirmation";
 import Kit from "./pages/kit/Kit";
 import SearchResults from "./pages/usersearch/SearchResults";
-import Checkout from "./pages/shoppingcart/Checkout";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/kit" element={<Kit />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/OrderConfirmation" element={<OrderConfirmation />} />
         </Routes>
       </main>
     </div>

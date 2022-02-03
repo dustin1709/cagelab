@@ -68,12 +68,21 @@ main {
 }
 
 .pageTitle {
-  padding: 3%;
+  padding: 3% 3% 1% 3%;
   margin: 2%;
+  /* background-color: #167bff; */
 }
 
+.viewDetailsButton {
+  text-align: right;
+}
+
+/* ****************************** */
+/* shopping cart and checkout page*/
+/* ****************************** */
+
 #orderItems > p {
-  padding: 2% 3%;
+  padding: 2% 3% 1% 4%;
 }
 
 .subTitle,
@@ -93,8 +102,9 @@ main {
 }
 
 #orderItems {
+  /* margin-left: 3%; */
   width: 64%;
-  height: 70vh;
+  height: 60vh;
   overflow-y: auto;
 }
 
@@ -102,9 +112,13 @@ main {
   text-align: center;
 }
 
-.viewDetailsButton {
+#backToCart {
+  width: 64%;
   text-align: right;
+  font-size: large;
 }
+
+/* ****************************** */
 
 @media (max-width: 500px) {
   .inner {
