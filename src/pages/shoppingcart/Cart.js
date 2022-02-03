@@ -28,7 +28,7 @@ const Cart = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-            <div id="checkOutButton">
+            <div class="checkOutButton">
               <Link to="/checkout">
                 <Button variant="secondary">Checkout</Button>{" "}
               </Link>

@@ -98,8 +98,12 @@ main {
   overflow-y: auto;
 }
 
-#checkOutButton {
+.checkOutButton {
   text-align: center;
+}
+
+.viewDetailsButton {
+  text-align: right;
 }
 
 @media (max-width: 500px) {
