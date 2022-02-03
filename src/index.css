@@ -8,7 +8,11 @@ body {
   font-family: sans-serif;
 }
 
-body, html, .App, #root, .outer {
+body,
+html,
+.App,
+#root,
+.outer {
   width: 100%;
   height: 100%;
 }
@@ -20,7 +24,7 @@ main {
   height: -webkit-fill-available;
   max-height: 100vh;
   overflow-x: auto;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
 }
 
 .MyNavBar {
@@ -33,15 +37,15 @@ main {
 
 .HomeRight {
   float: right;
-  background-color: #e6e6e6; 
-  width: 49%; 
+  background-color: #e6e6e6;
+  width: 49%;
   padding: 1%;
 }
 
 .HomeLeft {
   float: left;
-  background-color: #e6e6e6; 
-  width: 49%; 
+  background-color: #e6e6e6;
+  width: 49%;
   padding: 1%;
 }
 
@@ -60,12 +64,42 @@ main {
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
-.pageTitle{
+.pageTitle {
   padding: 3%;
   margin: 2%;
+}
+
+#orderItems > p {
+  padding: 2% 3%;
+}
+
+.subTitle,
+#help > p,
+#orderSummary > p {
+  padding: 3% 8%;
+}
+
+#help,
+#orderSummary {
+  width: 34%;
+  /* height: 10em; */
+}
+
+#help {
+  margin-top: 2%;
+}
+
+#orderItems {
+  width: 64%;
+  height: 70vh;
+  overflow-y: auto;
+}
+
+#checkOutButton {
+  text-align: center;
 }
 
 @media (max-width: 500px) {
@@ -104,7 +138,8 @@ main {
 }
 
 @media only screen and (max-width: 500px) {
-  .HomeLeft, .HomeRight {
+  .HomeLeft,
+  .HomeRight {
     clear: both;
     margin-bottom: 1.5%;
     width: 100%;
