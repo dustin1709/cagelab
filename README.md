@@ -1,10 +1,14 @@
 # Getting Started with Create React App
+When pulling the project over:
 
-Delete your 
-    "package-lock.json" 
-and run 
-    "npm install" 
-so "npm start" will work.
+    Delete your 
+        "package-lock.json" 
+    and run 
+        "npm install" 
+    so "npm start" will work.
+
+Adding extra bootstrap:
+    npm install react-bootstrap bootstrap@5.1.3
 
 Command for running json-server (running json file as an api):
 
