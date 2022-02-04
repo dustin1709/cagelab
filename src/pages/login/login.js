@@ -6,6 +6,7 @@ const Login = () => {
     const navigate = useNavigate();
     const [ username,setUsername ] = useState('');
     const [ password,setPassword ] = useState('');
+    const [ errSMS, setErrSMS ] = useState('');
 
     const API_URL = 'http://localhost:8000/users';
 
@@ -25,6 +26,8 @@ const Login = () => {
             if(username == user.username && password == user.password) {
                 navigate('/dashboard');
                 localStorage.setItem("user", user.username);
+            } else {
+                setErrSMS('Invalid credentials. Please try again.');
             }
         });
     };
@@ -34,7 +37,7 @@ const Login = () => {
             <div className="inner">
                 <form onSubmit={login}>
                     <h3>RIT CageLab Log in</h3>
-
+                    {errSMS ? (<p style={{color: "red"}}>{errSMS}</p>) : <></>}
                     <div className="form-group">
                         <label>Username</label>
                         <input type="text"
