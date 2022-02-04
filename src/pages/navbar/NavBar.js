@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import logo from './logo.png';
 import * as FaIcons from 'react-icons/fa';
 
 const NavBar = () => {
-
+    const navigate = useNavigate();
     const [isMobile, setMobile] = useState(window.innerWidth < 699);
       
     const updateMedia = () => {
@@ -15,6 +15,12 @@ const NavBar = () => {
         window.addEventListener("resize", updateMedia);
         return () => window.removeEventListener("resize", updateMedia);
     });
+
+    const logOut = async (e) => {
+        e.preventDefault();
+        localStorage.removeItem('user');
+        navigate('/');
+    }
 
     return (
         <div className='d-flex flex-column flex-shrink-0 p-3 text-white MyNavBar' style={{backgroundColor: '#F29441'}}>
@@ -50,8 +56,10 @@ const NavBar = () => {
                 <hr className={isMobile ? 'HideThisOne' :  ''}/>
                 <li>
                     <button 
-                    type="button" 
-                    className="btn">
+                        type="button" 
+                        className="btn"
+                        onClick={logOut}
+                    >
                         <FaIcons.FaSignOutAlt /> {isMobile ? '' :  'Sign Out'}
                     </button>
                 </li>

@@ -2,8 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../navbar/NavBar";
 import Button from "react-bootstrap/Button";
+import { useState, useEffect } from "react";
 
 const Home = () => {
+
+  const [ myUser, setMyUser ] = useState('');
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+        setMyUser(localStorage.getItem("user"));
+    }
+  }, [])
+
   return (
     <>
       <NavBar />
@@ -11,7 +20,7 @@ const Home = () => {
         <div
           style={{ padding: "3%", backgroundColor: "#cfd0d1", margin: "2%" }}
         >
-          <h3>Welcome, Unknown</h3>
+          <h3>Welcome, {myUser}</h3>
 
           <div style={{ padding: "1.5%", clear: "both" }}></div>
           <p>

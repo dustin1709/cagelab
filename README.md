@@ -1,6 +1,14 @@
 # Getting Started with Create React App
 
-Delete your "package-lock.json" and run "npm install" so "npm start" will work.
+Delete your 
+    "package-lock.json" 
+and run 
+    "npm install" 
+so "npm start" will work.
+
+Command for running json-server (running json file as an api):
+
+    npx json-server --watch data/user.json --port 8000
 
 ## Available Scripts
 
