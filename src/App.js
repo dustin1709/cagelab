@@ -8,6 +8,7 @@ import Checkout from "./pages/shoppingcart/Checkout";
 import OrderConfirmation from "./pages/shoppingcart/OrderConfirmation";
 import Kit from "./pages/kit/Kit";
 import SearchResults from "./pages/usersearch/SearchResults";
+import StaffLogin from "./staff/pages/login/StaffLogin";
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
           <Route path="/kit" element={<Kit />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/OrderConfirmation" element={<OrderConfirmation />} />
+          
+          
+          {/* Staff section */}
+          <Route path="/staff" element={<StaffLogin />} />
         </Routes>
       </main>
     </div>

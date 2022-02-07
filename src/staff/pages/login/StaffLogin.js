@@ -2,19 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, Navigate, Link } from 'react-router-dom';
 
-const Login = () => {
+const StaffLogin = () => {
     const navigate = useNavigate();
     const [ username,setUsername ] = useState('');
     const [ password,setPassword ] = useState('');
     const [ errSMS, setErrSMS ] = useState('');
 
     const API_URL = 'http://localhost:8000/users';
-
-    useEffect(() => {
-        if (localStorage.getItem("user")) {
-            navigate('/dashboard');
-        }
-    }, [])
 
     const login = async (e) => {
         e.preventDefault();
@@ -24,7 +18,7 @@ const Login = () => {
         let users = response;
         users.map((user) => {
             if(username == user.username && password == user.password) {
-                navigate('/dashboard');
+                navigate('/staff/dashboard');
                 localStorage.setItem("user", user.username);
             } else {
                 setErrSMS('Invalid credentials. Please try again.');
@@ -33,10 +27,11 @@ const Login = () => {
     };
 
     return (
-        <div className="outer">
+        <div className="outer-staff">
+            <div style={{ padding: "2.5%", clear: "both" }}></div>
             <div className="inner">
                 <form onSubmit={login}>
-                    <h3>RIT CageLab Log in</h3>
+                    <h3>Staff Log in - RIT CageLab</h3>
                     {errSMS ? (<p style={{color: "red"}}>{errSMS}</p>) : <></>}
                     <div className="form-group">
                         <label>Username</label>
@@ -54,7 +49,7 @@ const Login = () => {
                             onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <div style={{ padding: "1.5%", clear: "both" }}></div>
-                        <Link to="/staff">Staff login</Link>
+                        <Link to="/">Switch to user login</Link>
                     <div style={{ padding: "0.5%", clear: "both" }}></div>
                     <button type="submit" id="login-button" className="btn btn-dark btn-lg btn-block">Sign in</button>
                 </form>
@@ -63,4 +58,4 @@ const Login = () => {
     );
 }
 
-export default Login
+export default StaffLogin
