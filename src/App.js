@@ -11,6 +11,9 @@ import SearchResults from "./pages/usersearch/SearchResults";
 import StaffLogin from "./staff/pages/login/StaffLogin";
 import StaffDashboard from "./staff/pages/dashboard/StaffDashboard";
 import StaffSearch from "./staff/pages/search/StaffSearch";
+import StaffCheckIn from "./staff/pages/checkin/StaffCheckIn";
+import StaffCart from "./staff/pages/cart/StaffCart";
+import StaffReservation from "./staff/pages/reservation/StaffReservation";
 
 function App() {
   return (
@@ -32,6 +35,9 @@ function App() {
           <Route path="/staff" element={<StaffLogin />} />
           <Route path="/staff/dashboard" element={<StaffDashboard />} />
           <Route path="/staff/search" element={<StaffSearch />} />
+          <Route path="/staff/checkin" element={<StaffCheckIn />} />
+          <Route path="/staff/cart" element={<StaffCart />} />
+          <Route path="/staff/reservation" element={<StaffReservation />} />
         </Routes>
       </main>
     </div>
