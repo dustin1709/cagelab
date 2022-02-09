@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
 
-const StaffDashboard = () => {
+const StaffSearch = () => {
 
   const [ myUser, setMyUser ] = useState('');
   useEffect(() => {
@@ -23,4 +23,4 @@ const StaffDashboard = () => {
   );
 };
 
-export default StaffDashboard;
+export default StaffSearch;

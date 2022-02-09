@@ -9,6 +9,8 @@ import OrderConfirmation from "./pages/shoppingcart/OrderConfirmation";
 import Kit from "./pages/kit/Kit";
 import SearchResults from "./pages/usersearch/SearchResults";
 import StaffLogin from "./staff/pages/login/StaffLogin";
+import StaffDashboard from "./staff/pages/dashboard/StaffDashboard";
+import StaffSearch from "./staff/pages/search/StaffSearch";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           
           {/* Staff section */}
           <Route path="/staff" element={<StaffLogin />} />
+          <Route path="/staff/dashboard" element={<StaffDashboard />} />
+          <Route path="/staff/search" element={<StaffSearch />} />
         </Routes>
       </main>
     </div>
