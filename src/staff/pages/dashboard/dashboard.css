@@ -1,0 +1,20 @@
+.DButton {
+    padding: 5%;
+    margin: 1%;
+    width: 32%;
+    background-color: lightgray;
+    text-align: center;
+}
+
+.page-row {
+    display: flex;
+    flex-direction: row;
+    margin: 1%;
+}
+
+.dashboard-comp {
+    width: 50%;
+    margin: 1%;
+    padding: 1%;
+    background-color: lightgray;
+}
