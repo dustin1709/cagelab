@@ -1,0 +1,13 @@
+.TabButton {
+    width: 450px;
+    text-align: center;
+    font-size: 200%;
+    margin: 5px;
+    padding: 100px;
+    background-color: lightgray;
+}
+
+#flexRow {
+    flex-direction: row;
+    display: flex;
+}

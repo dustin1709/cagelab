@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
+import "./checkin.css";
 
 const StaffCheckIn = () => {
 
@@ -17,7 +18,21 @@ const StaffCheckIn = () => {
     <>
       <StaffNavBar />
       <div className="mainContainerRight">
-        
+        <div style={{ padding: "50px" }}>
+          <h3>Check in Item</h3>
+          <div id="flexRow">
+            <div className="TabButton">
+              <Link to="" style={{textDecoration: "none", color: "black"}}>
+                Scan Item
+              </Link>
+            </div>
+            <div className="TabButton">
+              <Link to="" style={{textDecoration: "none", color: "black"}}>
+                Search Item by ID
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

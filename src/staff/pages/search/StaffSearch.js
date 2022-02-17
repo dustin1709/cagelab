@@ -17,7 +17,10 @@ const StaffSearch = () => {
     <>
       <StaffNavBar />
       <div className="mainContainerRight">
-        
+        <div style={{ padding: "50px" }}>
+          <h3>What type of item do you want?</h3>
+          
+        </div>
       </div>
     </>
   );
