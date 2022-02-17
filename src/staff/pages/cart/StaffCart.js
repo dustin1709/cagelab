@@ -25,6 +25,7 @@ const StaffCart = () => {
             <table class="table">
               <thead>
                 <tr>
+                  <th scope="col">Borrower's username</th>
                   <th scope="col">Item Name</th>
                   <th scope="col">Quantity</th>
                   <th></th>
@@ -32,6 +33,7 @@ const StaffCart = () => {
               </thead>
               <tbody>
                 <tr>
+                  <td>btn3400</td>
                   <td>Item Example</td>
                   <td>1</td>
                   <td><button type="button" className="btn btn-danger"><FaIcons.FaTrashAlt /></button></td>
