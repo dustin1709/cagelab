@@ -56,7 +56,7 @@ const Login = () => {
                     <div style={{ padding: "1.5%", clear: "both" }}></div>
                         <Link to="/staff">Staff login</Link>
                     <div style={{ padding: "0.5%", clear: "both" }}></div>
-                    <button type="submit" id="login-button" className="btn btn-dark btn-lg btn-block">Sign in</button>
+                    <button type="submit" id="login-button" className="btn btn-secondary btn-lg btn-block">Sign in</button>
                 </form>
             </div>
         </div>
