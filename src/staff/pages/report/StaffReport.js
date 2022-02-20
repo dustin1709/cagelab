@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
-import "./checkin.css";
 
-const StaffCheckIn = () => {
+const StaffReport = () => {
 
   const [ myUser, setMyUser ] = useState('');
   useEffect(() => {
@@ -19,23 +18,12 @@ const StaffCheckIn = () => {
       <StaffNavBar />
       <div className="mainContainerRight">
         <div style={{ padding: "50px" }}>
-          <h3>Check in Item</h3>
-          <div id="flexRow">
-            <div className="TabButton">
-              <Link to="" style={{textDecoration: "none", color: "black"}}>
-                Scan Item
-              </Link>
-            </div>
-            <div className="TabButton">
-              <Link to="/staff/searchbyid" style={{textDecoration: "none", color: "black"}}>
-                Search Item by ID
-              </Link>
-            </div>
-          </div>
+          <h3>View Report</h3>
+          
         </div>
       </div>
     </>
   );
 };
 
-export default StaffCheckIn;
+export default StaffReport;

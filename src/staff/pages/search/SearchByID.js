@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
-import "./checkin.css";
+import * as FaIcons from 'react-icons/fa';
 
-const StaffCheckIn = () => {
+const SearchByID = () => {
 
   const [ myUser, setMyUser ] = useState('');
   useEffect(() => {
@@ -19,23 +19,17 @@ const StaffCheckIn = () => {
       <StaffNavBar />
       <div className="mainContainerRight">
         <div style={{ padding: "50px" }}>
-          <h3>Check in Item</h3>
-          <div id="flexRow">
-            <div className="TabButton">
-              <Link to="" style={{textDecoration: "none", color: "black"}}>
-                Scan Item
-              </Link>
+            <h3>Search Item</h3>
+            <div className="input-group">
+                <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <button type="button" className="btn btn-dark">
+                    <FaIcons.FaSearch /> Search
+                </button>
             </div>
-            <div className="TabButton">
-              <Link to="/staff/searchbyid" style={{textDecoration: "none", color: "black"}}>
-                Search Item by ID
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default StaffCheckIn;
+export default SearchByID;

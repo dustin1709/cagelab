@@ -16,6 +16,8 @@ import StaffCart from "./staff/pages/cart/StaffCart";
 import StaffReservation from "./staff/pages/reservation/StaffReservation";
 import StaffKit from "./staff/pages/kit/StaffKit";
 import Inventory from "./staff/pages/inventory/Inventory";
+import SearchByID from "./staff/pages/search/SearchByID";
+import StaffReport from "./staff/pages/report/StaffReport";
 
 function App() {
   return (
@@ -42,6 +44,8 @@ function App() {
           <Route path="/staff/reservation" element={<StaffReservation />} />
           <Route path="/staff/kit" element={<StaffKit />} />
           <Route path="/staff/inventory" element={<Inventory />} />
+          <Route path="/staff/searchbyid" element={<SearchByID />} />
+          <Route path="/staff/report" element={<StaffReport />} />
         </Routes>
       </main>
     </div>
