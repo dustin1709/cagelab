@@ -19,7 +19,7 @@ const Checkout = () => {
 
         <div style={{ margin: "2%" }}>
           <div id="backToCart">
-            <Link to="/cart">Back to Cart</Link>
+            <Link to={"/cart"}>Back to Cart</Link>
           </div>
           <OrderList />
 

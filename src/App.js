@@ -7,6 +7,7 @@ import Cart from "./pages/shoppingcart/Cart";
 import Checkout from "./pages/shoppingcart/Checkout";
 import OrderConfirmation from "./pages/shoppingcart/OrderConfirmation";
 import Kit from "./pages/kit/Kit";
+import CreateKit from "./pages/kit/CreateKit";
 import SearchResults from "./pages/usersearch/SearchResults";
 import StaffLogin from "./staff/pages/login/StaffLogin";
 import StaffDashboard from "./staff/pages/dashboard/StaffDashboard";
@@ -31,10 +32,10 @@ function App() {
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/kit" element={<Kit />} />
+          <Route path="/createkit" element={<CreateKit />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/OrderConfirmation" element={<OrderConfirmation />} />
-          
-          
+
           {/* Staff section */}
           <Route path="/staff" element={<StaffLogin />} />
           <Route path="/staff/dashboard" element={<StaffDashboard />} />

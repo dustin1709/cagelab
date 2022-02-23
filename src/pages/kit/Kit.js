@@ -16,11 +16,19 @@ const Kit = () => {
         </div>
 
         <div class="kitSelection">
-          <Form.Select aria-label="Default select example">
+          <Form.Select
+            aria-label="Default select example"
+            style={{ width: "70%", float: "left" }}
+          >
             <option value="1">Current Kit</option>
             <option value="2">Past Kit</option>
             <option value="3">Pending Kit</option>
           </Form.Select>
+          <Link to="/createkit">
+            <Button variant="primary" id="newKit">
+              New Kit
+            </Button>
+          </Link>
         </div>
 
         <div class="kitTable">
