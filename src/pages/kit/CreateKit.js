@@ -2,7 +2,6 @@ import React from "react";
 import NavBar from "../navbar/NavBar";
 import { Form, Row, Col } from "react-bootstrap";
 import { useState } from "react";
-
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 

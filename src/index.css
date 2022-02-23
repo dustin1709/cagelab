@@ -113,6 +113,10 @@ main {
   overflow-y: auto;
 }
 
+.col {
+  margin-bottom: 2%;
+}
+
 .checkOutButton {
   text-align: center;
 }
