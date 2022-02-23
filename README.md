@@ -1,14 +1,18 @@
 # Getting Started with Create React App
+
 When pulling the project over:
 
-    Delete your 
-        "package-lock.json" 
-    and run 
-        "npm install" 
+    Delete your
+        "package-lock.json"
+    and run
+        "npm install"
     so "npm start" will work.
 
 Adding extra bootstrap:
-    npm install react-bootstrap bootstrap@5.1.3
+npm install react-bootstrap bootstrap@5.1.3
+
+Install for numeric input:
+npm install react-numeric-input --save
 
 Command for running json-server (running json file as an api):
 
@@ -83,4 +87,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
 # cagelab
