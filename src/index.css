@@ -12,7 +12,8 @@ body,
 html,
 .App,
 #root,
-.outer, .outer-staff {
+.outer,
+.outer-staff {
   width: 100%;
   height: 100%;
 }
@@ -54,11 +55,11 @@ main {
   justify-content: center;
   flex-direction: column;
   text-align: left;
-  background: #F29441;
+  background: #f29441;
 }
 
 .outer-staff {
-  background: #F29441;
+  background: #f29441;
 }
 
 .inner {
@@ -120,6 +121,22 @@ main {
   width: 64%;
   text-align: right;
   font-size: large;
+}
+
+/* ****************************** */
+/* kit page*/
+/* ****************************** */
+
+.kitSelection {
+  width: 30%;
+  padding-left: 3%;
+  margin-left: 2%;
+}
+
+.kitTable {
+  /* width: 80%; */
+  padding: 0 3%;
+  margin: 2%;
 }
 
 /* ****************************** */
