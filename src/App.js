@@ -19,6 +19,8 @@ import StaffKit from "./staff/pages/kit/StaffKit";
 import Inventory from "./staff/pages/inventory/Inventory";
 import SearchByID from "./staff/pages/search/SearchByID";
 import StaffReport from "./staff/pages/report/StaffReport";
+import AddItem from "./staff/pages/inventory/AddItem";
+import AddItemType from "./staff/pages/inventory/AddItemType";
 
 function App() {
   return (
@@ -47,6 +49,8 @@ function App() {
           <Route path="/staff/inventory" element={<Inventory />} />
           <Route path="/staff/searchbyid" element={<SearchByID />} />
           <Route path="/staff/report" element={<StaffReport />} />
+          <Route path="/staff/addItem" element={<AddItem />} />
+          <Route path="/staff/addItemType" element={<AddItemType />} />
         </Routes>
       </main>
     </div>

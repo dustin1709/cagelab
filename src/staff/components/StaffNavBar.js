@@ -57,11 +57,6 @@ const StaffNavBar = () => {
                         Report
                     </NavLink>
                 </li>
-                <li>
-                    <NavLink to="/staff/settings" activeclassname="active" className="nav-link text-white">
-                        Settings
-                    </NavLink>
-                </li>
                 <div style={{padding: '5%', clear: 'both'}}></div>
                 <hr/>
                 <li>
