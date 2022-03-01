@@ -18,9 +18,6 @@ Command for running json-server (running json file as an api):
 
     npx json-server --watch data/user.json --port 8000
 
-    Running json-server:
-        json-server --watch data/user.json --port 8000
-
 ## Available Scripts
 
 In the project directory, you can run:
