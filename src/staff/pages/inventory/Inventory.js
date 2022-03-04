@@ -5,12 +5,25 @@ import { useState, useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
 
 const Inventory = () => {
+  const API_URL = "http://192.168.192.31:3000/itemtypes";
 
   const [ myUser, setMyUser ] = useState('');
   useEffect(() => {
     if (localStorage.getItem("user")) {
         setMyUser(localStorage.getItem("user"));
     }
+  }, [])
+
+  const [ itemTypes, setItemTypes ] = useState([]);
+  useEffect(() => {
+    const loadTypes = async () => {
+      let result = await fetch(API_URL);
+      if(!result.ok) throw Error("Unable to get item types");
+      let res = await result.json();
+      console.log(res.itemtypes);
+      setItemTypes(res.itemtypes);
+    }
+    loadTypes();
   }, [])
 
   return (
@@ -22,8 +35,11 @@ const Inventory = () => {
           <div style={{width: "30%", clear: 'both'}}>
             <label>Choose item type</label>
             <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-              <option value="NA">Type1</option>
-              <option value="NA">Type2</option>
+              {
+                itemTypes.map((itemType) => (
+                  <option value={itemType.typeID}>{itemType.model}</option>
+                ))
+              }
             </select>
           </div>
           <div style={{paddingTop: "1%", clear: 'both'}}>
