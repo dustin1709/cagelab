@@ -7,12 +7,19 @@ import Button from "react-bootstrap/Button";
 
 const AddItem = () => {
   const [date, setDate] = useState(new Date());
-  const [item_types, setItem_types] = useState([]);
+
+  const API_URL = "http://192.168.192.31:3000/";
+  const [ itemTypes, setItemTypes ] = useState([]);
   useEffect(() => {
-    if (localStorage.getItem(item_types) != null) {
-      setItem_types(localStorage.getItem(item_types));               
+    const loadTypes = async () => {
+      let result = await fetch(API_URL+"itemtypes");
+      if(!result.ok) throw Error("Unable to get item types");
+      let res = await result.json();
+      console.log(res.itemtypes);
+      setItemTypes(res.itemtypes);
     }
-  }, []); 
+    loadTypes();
+  }, []) 
   return (
     <>
       <StaffNavBar />
@@ -32,7 +39,7 @@ const AddItem = () => {
                 <Col sm="10">
                   <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                     {
-                      item_types.map((itemType) => (
+                      itemTypes.map((itemType) => (
                         <option value={itemType.typeID}>{itemType.model}</option>
                       ))
                     }

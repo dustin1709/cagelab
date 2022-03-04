@@ -22,7 +22,6 @@ const Inventory = () => {
       let res = await result.json();
       console.log(res.itemtypes);
       setItemTypes(res.itemtypes);
-      localStorage.setItem('item_types', res.itemtypes);
     }
     loadTypes();
   }, [])
