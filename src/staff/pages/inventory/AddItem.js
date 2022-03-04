@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
 import { Form, Row, Col } from "react-bootstrap";
 import { useState } from "react";
@@ -7,6 +7,12 @@ import Button from "react-bootstrap/Button";
 
 const AddItem = () => {
   const [date, setDate] = useState(new Date());
+  const [item_types, setItem_types] = useState([]);
+  useEffect(() => {
+    if (localStorage.getItem(item_types) != null) {
+      setItem_types(localStorage.getItem(item_types));               
+    }
+  }, []); 
   return (
     <>
       <StaffNavBar />
@@ -24,10 +30,13 @@ const AddItem = () => {
                   Item Type
                 </Form.Label>
                 <Col sm="10">
-                    <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                        <option value="NA">Type1</option>
-                        <option value="NA">Type2</option>
-                    </select>
+                  <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    {
+                      item_types.map((itemType) => (
+                        <option value={itemType.typeID}>{itemType.model}</option>
+                      ))
+                    }
+                  </select>
                 </Col>
               </Form.Group>
 
