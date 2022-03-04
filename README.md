@@ -8,15 +8,22 @@ When pulling the project over:
         "npm install"
     so "npm start" will work.
 
+    OR:
+        make cleanstart
+
 Adding extra bootstrap:
 npm install react-bootstrap bootstrap@5.1.3
 
 Install for numeric input:
 npm install react-numeric-input --save
 
-Command for running json-server (running json file as an api):
+Command for running json-server (running json file as an api) example:
 
-    npx json-server --watch data/user.json --port 8000
+    npx json-server --watch data/user.json --port 8000 
+
+When working with the RIT VM:
+    First time running it on your personal computer, type the following in the cmd line:
+        make cleanstart
 
 ## Available Scripts
 
