@@ -21,6 +21,7 @@ import SearchByID from "./staff/pages/search/SearchByID";
 import StaffReport from "./staff/pages/report/StaffReport";
 import AddItem from "./staff/pages/inventory/AddItem";
 import AddItemType from "./staff/pages/inventory/AddItemType";
+import ViewItem from "./staff/pages/inventory/ViewItem";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path="/staff/report" element={<StaffReport />} />
           <Route path="/staff/addItem" element={<AddItem />} />
           <Route path="/staff/addItemType" element={<AddItemType />} />
+          <Route path="/staff/viewitem" element={<ViewItem />} />
         </Routes>
       </main>
     </div>
