@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Navigate, Link } from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
@@ -9,7 +9,8 @@ const Inventory = () => {
 
   const [ myUser, setMyUser ] = useState('');
   const [ state, setState ] = useState(0);
-  
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (localStorage.getItem("user")) {
         setMyUser(localStorage.getItem("user"));
@@ -31,7 +32,13 @@ const Inventory = () => {
   const next = async (e) => {
     e.preventDefault();
     console.log("Option value is " + state);
-    
+    if (!localStorage.getItem('typeID')) {
+      localStorage.setItem('typeID', state);
+    } else {
+      localStorage.removeItem('typeID');
+      localStorage.setItem('typeID', state);
+    }
+    navigate('/staff/viewitem');
   };
 
   return (
