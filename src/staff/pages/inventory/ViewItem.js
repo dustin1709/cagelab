@@ -27,11 +27,6 @@ const ViewItem = () => {
       let res = await result.json();
       console.log(res.itemtypes);
       setItemTypes(res.itemtypes);
-      itemTypes.map((itemType) => {
-        if (itemType.typeID == itemID) {
-            setItem(itemType);
-        }
-      });
     }
     loadTypes();
   }, [])
@@ -50,9 +45,10 @@ const ViewItem = () => {
           <div style={{width: "30%", clear: 'both'}}>
             <label>Choose item type</label>
             <form onSubmit={add}>
-                <h5>{item.name}</h5>
-                <h5>{item.model}</h5>
-                <h5>{item.cost}</h5>
+              {
+                  setItem(itemTypes.filter((itemType) => itemType.typeID == itemID))
+              }
+              <h5>{item.name}</h5>
                 <button type="submit" id="login-button" className="btn btn-secondary btn-lg btn-block">Add</button>
             </form>
           </div>
