@@ -43,7 +43,7 @@ const Inventory = () => {
             <label>Choose item type</label>
             <form onSubmit={next}>
               <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
-              onChange={(e) => setState({ value: e.target.value })}>
+              onChange={(e) => setState(e.target.value)}>
                 {
                   itemTypes.map((itemType) => (
                     <option value={itemType.typeID}>{itemType.model}</option>
