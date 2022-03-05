@@ -25,20 +25,23 @@ const Inventory = () => {
       let res = await result.json();
       console.log(res.itemtypes);
       setItemTypes(res.itemtypes);
+      localStorage.setItem('items-list', JSON.stringify(res.itemtypes))
     }
     loadTypes();
   }, [])
 
   const next = async (e) => {
     e.preventDefault();
-    console.log("Option value is " + state);
-    if (!localStorage.getItem('typeID')) {
-      localStorage.setItem('typeID', state);
-    } else {
-      localStorage.removeItem('typeID');
-      localStorage.setItem('typeID', state);
+    if (state !== 0) {
+      console.log("Option value is " + state);
+      if (!localStorage.getItem('typeID')) {
+        localStorage.setItem('typeID', state);
+      } else {
+        localStorage.removeItem('typeID');
+        localStorage.setItem('typeID', state);
+      }
+      navigate('/staff/viewitem');
     }
-    navigate('/staff/viewitem');
   };
 
   return (

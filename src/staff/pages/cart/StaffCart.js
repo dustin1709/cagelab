@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
@@ -8,11 +8,27 @@ import * as FaIcons from 'react-icons/fa';
 const StaffCart = () => {
 
   const [ myUser, setMyUser ] = useState('');
+  const [borrower, setBorrower] = useState('');
+  const [item, setItem] = useState('');
+  const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.getItem("user")) {
         setMyUser(localStorage.getItem("user"));
     }
+    if (localStorage.getItem("borrower")) {
+      setBorrower(localStorage.getItem("borrower"));
+    }
+    if (localStorage.getItem("item")) {
+      setItem(JSON.parse(localStorage.getItem("item")));
+    }
   }, [])
+
+  const remove = async (e) => {
+    e.preventDefault();
+    localStorage.removeItem('borrower');
+    localStorage.removeItem('item');
+    navigate('/staff/cart');
+  };
 
   return (
     <>
@@ -25,7 +41,7 @@ const StaffCart = () => {
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">Borrower's username</th>
+                  <th scope="col">Borrower</th>
                   <th scope="col">Item Name</th>
                   <th scope="col">Quantity</th>
                   <th></th>
@@ -33,10 +49,10 @@ const StaffCart = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td>btn3400</td>
-                  <td>Item Example</td>
-                  <td>1</td>
-                  <td><button type="button" className="btn btn-danger"><FaIcons.FaTrashAlt /></button></td>
+                  <td>{localStorage.getItem('item') ? borrower : ""}</td>
+                  <td>{localStorage.getItem('item') ? item.name : ""}</td>
+                  <td>{localStorage.getItem('item') ? 1 : ""}</td>
+                  <td>{localStorage.getItem('item') ? <button type="button" className="btn btn-danger" onClick={remove}><FaIcons.FaTrashAlt /></button> : ""}</td>
                 </tr>
               </tbody>
             </table>
