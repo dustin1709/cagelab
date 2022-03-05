@@ -31,6 +31,7 @@ const Inventory = () => {
   const next = async (e) => {
     e.preventDefault();
     console.log("Option value is " + state);
+    
   };
 
   return (
@@ -44,6 +45,7 @@ const Inventory = () => {
             <form onSubmit={next}>
               <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
               onChange={(e) => setState(e.target.value)}>
+                <option value="0">Select item type</option>
                 {
                   itemTypes.map((itemType) => (
                     <option value={itemType.typeID}>{itemType.model}</option>
