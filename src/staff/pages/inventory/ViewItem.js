@@ -29,7 +29,7 @@ const ViewItem = () => {
       setItemTypes(res.itemtypes);
       itemTypes.map((itemType) => {
         if (itemType.typeID == itemID) {
-            setItem(itemType);
+          setItem(itemType);
         }
       });
     }
