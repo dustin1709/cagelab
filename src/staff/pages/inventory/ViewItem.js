@@ -6,7 +6,6 @@ import StaffNavBar from "../../components/StaffNavBar";
 
 const ViewItem = () => {
   const API_URL = "http://192.168.192.31:3000/itemtypes";
-  const [ itemTypes, setItemTypes ] = useState([]);
   const [ myUser, setMyUser ] = useState('');
   const navigate = useNavigate();
   const [ itemID, setItemID ] = useState(0);
@@ -26,7 +25,7 @@ const ViewItem = () => {
       if(!result.ok) throw Error("Unable to get item types");
       let res = await result.json();
       console.log(res.itemtypes);
-      setItemTypes(res.itemtypes);
+      setItem((res.itemtypes).filter((itemType) => itemType.typeID == itemID))
     }
     loadTypes();
   }, [])
@@ -45,10 +44,7 @@ const ViewItem = () => {
           <div style={{width: "30%", clear: 'both'}}>
             <label>Choose item type</label>
             <form onSubmit={add}>
-              {
-                  setItem(itemTypes.filter((itemType) => itemType.typeID == itemID))
-              }
-              <h5>{item.name}</h5>
+                <h5>{item.name}</h5>
                 <button type="submit" id="login-button" className="btn btn-secondary btn-lg btn-block">Add</button>
             </form>
           </div>
