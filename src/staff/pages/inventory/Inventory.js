@@ -8,6 +8,8 @@ const Inventory = () => {
   const API_URL = "http://192.168.192.31:3000/itemtypes";
 
   const [ myUser, setMyUser ] = useState('');
+  const [ item, setItem ] = useState('');
+  
   useEffect(() => {
     if (localStorage.getItem("user")) {
         setMyUser(localStorage.getItem("user"));
@@ -26,6 +28,11 @@ const Inventory = () => {
     loadTypes();
   }, [])
 
+  const next = async (e) => {
+    e.preventDefault();
+    console.log("Option value is " + e.target.value);
+  };
+
   return (
     <>
       <StaffNavBar />
@@ -34,13 +41,16 @@ const Inventory = () => {
           <h3>What type of item do you want to see?</h3>
           <div style={{width: "30%", clear: 'both'}}>
             <label>Choose item type</label>
-            <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-              {
-                itemTypes.map((itemType) => (
-                  <option value={itemType.typeID}>{itemType.model}</option>
-                ))
-              }
-            </select>
+            <form onSubmit={next}>
+              <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                {
+                  itemTypes.map((itemType) => (
+                    <option value={itemType.typeID}>{itemType.model}</option>
+                  ))
+                }
+              </select>
+              <button type="submit" id="login-button" className="btn btn-secondary btn-lg btn-block">Next</button>
+            </form>
           </div>
           <div style={{paddingTop: "1%", clear: 'both'}}>
             <label>else</label>
