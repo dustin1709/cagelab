@@ -25,7 +25,11 @@ const ViewItem = () => {
       if(!result.ok) throw Error("Unable to get item types");
       let res = await result.json();
       console.log(res.itemtypes);
-      setItem((res.itemtypes).filter((itemType) => itemType.typeID == itemID))
+      res.itemtypes.map((itemType) => {
+          if (itemType.typeID == itemID) {
+              setItem(itemType);
+          }
+      });
     }
     loadTypes();
   }, [])
