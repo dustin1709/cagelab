@@ -8,7 +8,7 @@ const Inventory = () => {
   const API_URL = "http://192.168.192.31:3000/itemtypes";
 
   const [ myUser, setMyUser ] = useState('');
-  const [ item, setItem ] = useState('');
+  const [ state, setState ] = useState('');
   
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -30,7 +30,7 @@ const Inventory = () => {
 
   const next = async (e) => {
     e.preventDefault();
-    console.log("Option value is " + e.target.value);
+    console.log("Option value is " + state);
   };
 
   return (
@@ -42,7 +42,8 @@ const Inventory = () => {
           <div style={{width: "30%", clear: 'both'}}>
             <label>Choose item type</label>
             <form onSubmit={next}>
-              <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+              <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+              onChange={(e) => setState(e.target.value)}>
                 {
                   itemTypes.map((itemType) => (
                     <option value={itemType.typeID}>{itemType.model}</option>
