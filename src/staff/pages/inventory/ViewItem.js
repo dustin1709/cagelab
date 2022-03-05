@@ -9,7 +9,7 @@ const ViewItem = () => {
   const [ myUser, setMyUser ] = useState('');
   const navigate = useNavigate();
   const [ itemID, setItemID ] = useState(0);
-  const [ item, setItem ] = useState();
+  const [ item, setItem ] = useState(null);
   useEffect(() => {
     if (localStorage.getItem("user")) {
         setMyUser(localStorage.getItem("user"));
