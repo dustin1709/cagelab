@@ -6,12 +6,38 @@ import StaffNavBar from "../../components/StaffNavBar";
 
 const StaffReservation = () => {
 
-  const [ myUser, setMyUser ] = useState('');
+  const [ borrower, setBorrower ] = useState('');
+  const [ itemName, setItemName ] = useState('');
+  const [ orderID, setOrderID ] = useState('');
+  const [ today, setToday ] = useState('');
+  const [ tomorrow, setTomorrow ] = useState('');
+
   useEffect(() => {
-    if (localStorage.getItem("user")) {
-        setMyUser(localStorage.getItem("user"));
+    if (localStorage.getItem("borrower-checked")) {
+      setBorrower(localStorage.getItem("borrower-checked"));
+    }
+    if (localStorage.getItem("item-checked")) {
+      setBorrower(localStorage.getItem("item-checked"));
+    }
+    if (localStorage.getItem("orderID")) {
+      setOrderID(localStorage.getItem("orderID"));
     }
   }, [])
+
+  useEffect(() => {
+    var today = new Date();
+    setToday(formatDate(today));
+    var tomorrow = new Date(new Date(today).getTime() + 60 * 60 * 24 * 1000);
+    setTomorrow(formatDate(tomorrow));
+  }, [])
+
+  function formatDate(date) {
+    var dd = String(date.getDate()).padStart(2, '0');
+    var mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = date.getFullYear();
+    date = mm + '/' + dd + '/' + yyyy;
+    return date;
+  }
 
   return (
     <>
@@ -38,7 +64,18 @@ const StaffReservation = () => {
               </tr>
             </thead>
             <tbody>
-
+              {
+                localStorage.getItem("item-checked") ?
+                <tr>
+                  <td>{orderID}</td>
+                  <td>{borrower}</td>
+                  <td>{itemName}</td>
+                  <td>1</td>
+                  <td>{today}</td>
+                  <td>{tomorrow}</td>
+                </tr> :
+                <tr></tr>
+              }
             </tbody>
           </table>
         </div>

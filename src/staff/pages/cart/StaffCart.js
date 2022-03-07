@@ -30,6 +30,16 @@ const StaffCart = () => {
     navigate('/staff/cart');
   };
 
+  const checkout = async (e) => {
+    e.preventDefault();
+    localStorage.setItem('orderID', (borrower + Math.floor(Math.random() * 101)));
+    localStorage.setItem('borrower-checked', borrower);
+    localStorage.setItem('item-checked', item.name);
+    localStorage.removeItem('borrower');
+    localStorage.removeItem('item');
+    navigate('/staff/reservation');
+  }
+
   return (
     <>
       <StaffNavBar />
@@ -48,12 +58,16 @@ const StaffCart = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>{localStorage.getItem('item') ? borrower : ""}</td>
-                  <td>{localStorage.getItem('item') ? item.name : ""}</td>
-                  <td>{localStorage.getItem('item') ? 1 : ""}</td>
-                  <td>{localStorage.getItem('item') ? <button type="button" className="btn btn-danger" onClick={remove}><FaIcons.FaTrashAlt /></button> : ""}</td>
-                </tr>
+                {
+                  localStorage.getItem('item') ? 
+                  <tr>
+                    <td>{borrower}</td>
+                    <td>{item.name}</td>
+                    <td>1</td>
+                    <td><button type="button" className="btn btn-danger" onClick={remove}><FaIcons.FaTrashAlt /></button></td>
+                  </tr> : 
+                  <tr></tr>
+                }
               </tbody>
             </table>
           </div>
@@ -61,7 +75,7 @@ const StaffCart = () => {
             <div style={{ marginLeft: '10%', marginRight: '8%', padding: '5%', backgroundColor: '#cfd0d1' }}>
               <h5>Order Summary</h5>
               <p>If you are ready, click "Check out".</p>
-              <button type="button" className="btn btn-secondary">Check Out</button>
+              <button type="button" className="btn btn-secondary" onClick={checkout}>Check Out</button>
             </div>
           </div>
         </div>
