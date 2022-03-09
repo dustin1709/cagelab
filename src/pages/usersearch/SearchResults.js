@@ -14,19 +14,20 @@ const SearchResults = () => {
       let res = await result.json();
       console.log(res.itemtypes);
       setItemTypes(res.itemtypes);
-      localStorage.setItem('items-list', JSON.stringify(res.itemtypes))
+      localStorage.setItem('user-items-list', JSON.stringify(res.itemtypes))
     }
     loadTypes();
   }, [])
+
   const next = async (e) => {
     e.preventDefault();
     if (state !== 0) {
       console.log("Option value is " + state);
-      if (!localStorage.getItem('typeID')) {
-        localStorage.setItem('typeID', state);
+      if (!localStorage.getItem('user-typeID')) {
+        localStorage.setItem('user-typeID', state);
       } else {
-        localStorage.removeItem('typeID');
-        localStorage.setItem('typeID', state);
+        localStorage.removeItem('user-typeID');
+        localStorage.setItem('user-typeID', state);
       }
       navigate('/viewitem');
     }
