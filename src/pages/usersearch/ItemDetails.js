@@ -40,7 +40,7 @@ const ItemDetails = () => {
 
   return (
     <>
-      <StaffNavBar />
+      <NavBar />
       <div className="mainContainerRight">
         <div style={{padding: '3%', margin: '2%'}}>
           <h3>What type of item do you want to see?</h3>
