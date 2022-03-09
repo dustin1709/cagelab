@@ -12,6 +12,7 @@ const Search = () => {
   }
   const [selectDate, setSelectedDate] = useState(new Date());
   const submitDate = async (e) => {
+    localStorage.setItem('date', selectDate);
     navigate('/search/results');
   }
 
