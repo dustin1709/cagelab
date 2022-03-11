@@ -62,9 +62,6 @@ const Inventory = () => {
                   ))
                 }
               </select>
-              {
-                state!=0 ? <h6>Quantity available in inventory: 01</h6> : <></>
-              }
               <button type="submit" id="login-button" className="btn btn-secondary btn-lg btn-block">Next</button>
             </form>
           </div>

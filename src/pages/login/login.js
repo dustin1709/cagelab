@@ -8,7 +8,7 @@ const Login = () => {
     const [ password,setPassword ] = useState('');
     const [ errSMS, setErrSMS ] = useState('');
 
-    const API_URL = 'http://localhost:8000/users';
+    const API_URL = 'http://192.168.192.31:3000/users';
 
     useEffect(() => {
         if (localStorage.getItem("user")) {
