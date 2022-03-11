@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import NavBar from '../navbar/NavBar';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
@@ -6,16 +7,18 @@ const Reservation = () => {
   const [borrower, setBorrower] = useState('');
   const [itemName, setItemName] = useState('');
   const [ orderID, setOrderID ] = useState('');
+  const [ today, setToday ] = useState('');
+  const [ tomorrow, setTomorrow ] = useState('');
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
       setBorrower(localStorage.getItem("user"));
     }
     if (localStorage.getItem("user-item-checked")) {
-      setItemName(JSON.parse(localStorage.getItem("user-item-checked")).name);
+      setItemName(localStorage.getItem("user-item-checked"));
     }
-    if (localStorage.getItem("orderID")) {
-      setOrderID(localStorage.getItem("orderID"));
+    if (localStorage.getItem("user-orderID")) {
+      setOrderID(localStorage.getItem("user-orderID"));
     }
   }, [])
   

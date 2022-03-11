@@ -17,7 +17,7 @@ const StaffReservation = () => {
       setBorrower(localStorage.getItem("borrower-checked"));
     }
     if (localStorage.getItem("item-checked")) {
-      setBorrower(localStorage.getItem("item-checked"));
+      setItemName(localStorage.getItem("item-checked"));
     }
     if (localStorage.getItem("orderID")) {
       setOrderID(localStorage.getItem("orderID"));
@@ -54,7 +54,7 @@ const StaffReservation = () => {
                 <th scope="col">Item Name</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Check In Date</th>
-                <th scope="col">Check Out Date</th>
+                <th scope="col">Return By Date</th>
                 <th scope="col">Pick Up (Yes/No)</th>
               </tr>
             </thead>

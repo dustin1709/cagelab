@@ -43,9 +43,9 @@ const ItemDetails = () => {
       <NavBar />
       <div className="mainContainerRight">
         <div style={{padding: '3%', margin: '2%'}}>
-          <h3>What type of item do you want to see?</h3>
+          {items.map((item) => (<h3>{item.model}</h3>))}
           <div style={{width: "100%", clear: 'both'}}>
-            <label style={{padding: '1%'}}>Choose item type</label>
+            <label style={{padding: '1%'}}>Borrow this item</label>
             <form onSubmit={add} style={{
               width: "30%", clear: 'both', padding: '1%', border: '1px solid black', textAlign: 'center'
             }}>

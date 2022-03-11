@@ -3,9 +3,7 @@ import Login from "./pages/login/login";
 import Home from "./pages/userindex/Home";
 import Search from "./pages/usersearch/Search";
 import Reservation from "./pages/reservation/Reservation";
-import Cart from "./pages/shoppingcart/Cart";
 import Checkout from "./pages/shoppingcart/Checkout";
-import OrderConfirmation from "./pages/shoppingcart/OrderConfirmation";
 import Kit from "./pages/kit/Kit";
 import CreateKit from "./pages/kit/CreateKit";
 import SearchResults from "./pages/usersearch/SearchResults";
@@ -34,11 +32,9 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/search/results" element={<SearchResults />} />
           <Route path="/reservation" element={<Reservation />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<Checkout />} />
           <Route path="/kit" element={<Kit />} />
           <Route path="/createkit" element={<CreateKit />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/OrderConfirmation" element={<OrderConfirmation />} />
           <Route path="/viewitem" element={<ItemDetails/>} />
 
           {/* Staff section */}

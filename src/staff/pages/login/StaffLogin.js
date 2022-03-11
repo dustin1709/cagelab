@@ -15,7 +15,7 @@ const StaffLogin = () => {
         let result = await fetch(API_URL);
         if (!result.ok) throw Error('Did not receive expected data');
         let response = await result.json();
-        let users = response;
+        let users = response.item_typE;
         users.map((user) => {
             if(username == user.username && password == user.password) {
                 navigate('/staff/dashboard');

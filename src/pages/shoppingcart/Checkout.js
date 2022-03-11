@@ -25,9 +25,11 @@ const Checkout = () => {
 
   const checkout = async (e) => {
     e.preventDefault();
-    localStorage.setItem('user-orderID', (borrower + Math.floor(Math.random() * 101)));
-    localStorage.setItem('user-item-checked', item.name);
-    localStorage.removeItem('user-item');
+    if (localStorage.getItem("user-item")) {
+      localStorage.setItem('user-orderID', (borrower + Math.floor(Math.random() * 101)));
+      localStorage.setItem('user-item-checked', item.name);
+      localStorage.removeItem('user-item');
+    }
     navigate('/reservation');
   }
   return (
@@ -48,7 +50,7 @@ const Checkout = () => {
               </thead>
               <tbody>
                 {
-                  localStorage.getItem('item') ? 
+                  localStorage.getItem('user-item') ? 
                   <tr>
                     <td>{item.name}</td>
                     <td>1</td>
