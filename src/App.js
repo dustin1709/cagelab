@@ -22,6 +22,7 @@ import StaffReport from "./staff/pages/report/StaffReport";
 import AddItem from "./staff/pages/inventory/AddItem";
 import AddItemType from "./staff/pages/inventory/AddItemType";
 import ViewItem from "./staff/pages/inventory/ViewItem";
+import ItemDetails from "./pages/usersearch/ItemDetails";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/createkit" element={<CreateKit />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/OrderConfirmation" element={<OrderConfirmation />} />
+          <Route path="/viewitem" element={<ItemDetails/>} />
 
           {/* Staff section */}
           <Route path="/staff" element={<StaffLogin />} />

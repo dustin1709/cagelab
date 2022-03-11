@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
 
 const ViewItem = () => {
-  const API_URL = "http://192.168.192.31:3000/itemtypes";
+  const API_URL = "http://192.168.192.31:3000/item_type/type/all";
   const [ myUser, setMyUser ] = useState('');
   const navigate = useNavigate();
   const [ items, setItems ] = useState([]);
@@ -25,8 +25,8 @@ const ViewItem = () => {
       console.log("Fetching " + API_URL + "/" + localStorage.getItem("typeID"));
       if(!result.ok) throw Error("Unable to get item types");
       let res = await result.json();
-      console.log(res.itemtypes);
-      setItems(res.itemtypes)
+      console.log(res.item_type);
+      setItems(res.item_type)
     }
     loadTypes();
   }, [])
@@ -35,7 +35,7 @@ const ViewItem = () => {
     e.preventDefault();
     console.log("Item " + localStorage.getItem('typeID') + " added to cart.");
     localStorage.setItem('item', JSON.stringify(items[0]));
-    localStorage.setItem('borrower', JSON.stringify(borrower));
+    localStorage.setItem('borrower', borrower);
     localStorage.removeItem('typeID');
     navigate('/staff/cart');
   };

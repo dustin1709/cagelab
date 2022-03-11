@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from '../navbar/NavBar';
 import { Link, useNavigate, useLocation, Navigate } from 'react-router-dom';
 
 const SearchResults = () => {
-  const API_URL = "http://192.168.192.31:3000/itemtypes";
+  const API_URL = "http://192.168.192.31:3000/item_types";
   const navigate = useNavigate();
   const [ state, setState ] = useState(0);
   const [ itemTypes, setItemTypes ] = useState([]);
@@ -12,8 +12,8 @@ const SearchResults = () => {
       let result = await fetch(API_URL);
       if(!result.ok) throw Error("Unable to get item types");
       let res = await result.json();
-      console.log(res.itemtypes);
-      setItemTypes(res.itemtypes);
+      console.log(res.item_type);
+      setItemTypes(res.item_type);
       localStorage.setItem('user-items-list', JSON.stringify(res.itemtypes))
     }
     loadTypes();

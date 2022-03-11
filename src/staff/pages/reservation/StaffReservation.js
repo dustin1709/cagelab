@@ -44,14 +44,8 @@ const StaffReservation = () => {
       <StaffNavBar />
       <div className="mainContainerRight">
         <div style={{padding: '3%', backgroundColor: '#cfd0d1', margin: '2%'}}>
-          <h3>Reservation</h3>
+          <h3>Borrower Check Out History</h3>
           <div style={{padding: '0.75%', clear: 'both'}}></div>
-          <div style={{width: "30%", clear: 'both'}}>
-            <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-              <option value="reservation-current">Current</option>
-              <option value="reservation-past">Past</option>
-            </select>
-          </div>
           <table class="table">
             <thead>
               <tr>
@@ -61,6 +55,7 @@ const StaffReservation = () => {
                 <th scope="col">Quantity</th>
                 <th scope="col">Check In Date</th>
                 <th scope="col">Check Out Date</th>
+                <th scope="col">Pick Up (Yes/No)</th>
               </tr>
             </thead>
             <tbody>
@@ -73,6 +68,7 @@ const StaffReservation = () => {
                   <td>1</td>
                   <td>{today}</td>
                   <td>{tomorrow}</td>
+                  <td>Yes</td>
                 </tr> :
                 <tr></tr>
               }

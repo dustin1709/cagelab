@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import NavBar from '../navbar/NavBar';
 
 const ItemDetails = () => {
-  const API_URL = "http://192.168.192.31:3000/itemtypes";
+  const API_URL = "http://192.168.192.31:3000/item_type/type/all";
   const [ myUser, setMyUser ] = useState('');
   const navigate = useNavigate();
   const [ items, setItems ] = useState([]);
@@ -24,8 +24,8 @@ const ItemDetails = () => {
       console.log("Fetching " + API_URL + "/" + localStorage.getItem("user-typeID"));
       if(!result.ok) throw Error("Unable to get item types");
       let res = await result.json();
-      console.log(res.itemtypes);
-      setItems(res.itemtypes)
+      console.log(res.item_type);
+      setItems(res.item_type)
     }
     loadTypes();
   }, [])

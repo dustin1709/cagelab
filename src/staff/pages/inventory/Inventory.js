@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
 
 const Inventory = () => {
-  const API_URL = "http://192.168.192.31:3000/itemtypes";
+  const API_URL = "http://192.168.192.31:3000/item_types";
 
   const [ myUser, setMyUser ] = useState('');
   const [ state, setState ] = useState(0);
@@ -23,8 +23,8 @@ const Inventory = () => {
       let result = await fetch(API_URL);
       if(!result.ok) throw Error("Unable to get item types");
       let res = await result.json();
-      console.log(res.itemtypes);
-      setItemTypes(res.itemtypes);
+      console.log(res.item_type);
+      setItemTypes(res.item_type);
       localStorage.setItem('items-list', JSON.stringify(res.itemtypes))
     }
     loadTypes();
@@ -62,6 +62,9 @@ const Inventory = () => {
                   ))
                 }
               </select>
+              {
+                state!=0 ? <h6>Quantity available in inventory: 01</h6> : <></>
+              }
               <button type="submit" id="login-button" className="btn btn-secondary btn-lg btn-block">Next</button>
             </form>
           </div>

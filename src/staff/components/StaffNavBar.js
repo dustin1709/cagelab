@@ -39,7 +39,7 @@ const StaffNavBar = () => {
                 </li>
                 <li>
                     <NavLink to="/staff/reservation" activeclassname="active" className="nav-link text-white">
-                        Reservation
+                        History
                     </NavLink>
                 </li>
                 <li>
