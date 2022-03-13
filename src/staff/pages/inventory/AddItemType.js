@@ -23,7 +23,12 @@ const AddItemType = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(instance)
+      body: JSON.stringify({
+        "name": name, 
+        "model": model, 
+        "description": description, 
+        "cost": parseInt(cost)
+      })
     }
     const response = await fetch(API_URL+"item_type/addItem", postCmd);
     if (!response.ok) throw Error('Please reload the app')
