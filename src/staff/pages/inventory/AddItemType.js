@@ -16,27 +16,33 @@ const AddItemType = () => {
 
   const addItemType = async (e) => {
     e.preventDefault();
-    const instance = {name, model, description, cost};
-    console.log(JSON.stringify(instance));
-    const postCmd = {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify({
+      "name": name,
+      "model": model,
+      "description": description,
+      "cost": parseInt(cost)
+    });
+    var requestOptions = {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "name": name, 
-        "model": model, 
-        "description": description, 
-        "cost": parseInt(cost)
-      })
-    }
-    const response = await fetch(API_URL+"item_type/addItem", postCmd);
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    console.log(raw);
+    fetch("http://192.168.192.31:3000/item_type/addItem", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+    /*const response = await fetch(API_URL+"item_type/addItem", requestOptions);
+    console.log(response);
     if (!response.ok) throw Error('Please reload the app')
     if (response.ok) {
       console.log("New ITEM TYPE posted.");
       alert("New ITEM TYPE posted successfully.");
-    }
-    navigate('/staff/inventory');
+    }*/
+    //navigate('/staff/inventory');
   }
 
   return (
