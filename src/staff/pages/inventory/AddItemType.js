@@ -13,6 +13,7 @@ const AddItemType = () => {
 
   const navigate = useNavigate();
   const API_URL = "http://192.168.192.31:3000/";
+  
   const addItemType = async (e) => {
     e.preventDefault();
     const instance = {name, model, desc, cost};
