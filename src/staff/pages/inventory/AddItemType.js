@@ -12,7 +12,6 @@ const AddItemType = () => {
   const [ cost, setCost ] = useState(0);
 
   const navigate = useNavigate();
-  const API_URL = "http://192.168.192.31:3000/";
 
   const addItemType = async (e) => {
     e.preventDefault();
@@ -32,17 +31,11 @@ const AddItemType = () => {
     };
     console.log(raw);
     fetch("http://192.168.192.31:3000/item_type/addItem", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-    /*const response = await fetch(API_URL+"item_type/addItem", requestOptions);
-    console.log(response);
-    if (!response.ok) throw Error('Please reload the app')
-    if (response.ok) {
-      console.log("New ITEM TYPE posted.");
-      alert("New ITEM TYPE posted successfully.");
-    }*/
-    //navigate('/staff/inventory');
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+    alert("New item posted successfully.");
+    navigate('/staff/inventory');
   }
 
   return (
