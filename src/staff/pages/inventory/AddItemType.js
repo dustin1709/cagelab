@@ -1,12 +1,37 @@
 import React from "react";
 import StaffNavBar from "../../components/StaffNavBar";
 import { Form, Row, Col } from "react-bootstrap";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 const AddItemType = () => {
-  const [date, setDate] = useState(new Date());
+  const [ name, setName ] = useState('');
+  const [ model, setModel ] = useState('');
+  const [ desc, setDesc ] = useState('');
+  const [ cost, setCost ] = useState(0);
+
+  const navigate = useNavigate();
+  const API_URL = "http://192.168.192.31:3000/";
+  const addItemType = async (e) => {
+    e.preventDefault();
+    const instance = {name, model, desc, cost};
+    const postCmd = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(instance)
+    }
+    const response = await fetch(API_URL+"item_type/addItem", postCmd);
+    if (!response.ok) throw Error('Please reload the app')
+    if (response.ok) {
+      console.log("New ITEM TYPE posted.");
+      alert("New ITEM TYPE posted successfully.");
+    }
+    navigate('/staff/inventory');
+  }
+
   return (
     <>
       <StaffNavBar />
@@ -21,37 +46,37 @@ const AddItemType = () => {
 
               <Form.Group as={Row} className="mb-3" controlId="TypeName">
                 <Form.Label column sm="2">
-                  Type Name
+                  Name
                 </Form.Label>
                 <Col sm="10">
-                    <Form.Control as="input" />
+                    <Form.Control as="input" onChange={(e) => setName(e.target.value)} />
                 </Col>
               </Form.Group>
 
               <Form.Group as={Row} className="mb-3" controlId="TypeModel">
                 <Form.Label column sm="2">
-                  Type Model
+                  Model
                 </Form.Label>
                 <Col sm="10">
-                    <Form.Control as="input" />
+                    <Form.Control as="input" onChange={(e) => setModel(e.target.value)} />
                 </Col>
               </Form.Group>
 
               <Form.Group as={Row} className="mb-3" controlId="TypeDesc">
                 <Form.Label column sm="2">
-                  Type Description
+                  Description
                 </Form.Label>
                 <Col sm="10">
-                    <Form.Control as="textarea" />
+                    <Form.Control as="input" onChange={(e) => setDesc(e.target.value)} />
                 </Col>
               </Form.Group>
 
               <Form.Group as={Row} className="mb-3" controlId="TypeCost">
                 <Form.Label column sm="2">
-                  Type Cost
+                  Cost
                 </Form.Label>
                 <Col sm="10">
-                    <Form.Control as="input" />
+                    <Form.Control as="input" onChange={(e) => setCost(e.target.value)} />
                 </Col>
               </Form.Group>
             </Form>
@@ -64,7 +89,7 @@ const AddItemType = () => {
           </div>
           <div class="submitKit">
             <Link to="">
-              <Button variant="primary">Submit</Button>{" "}
+              <Button variant="primary" onClick={addItemType}>Submit</Button>{" "}
             </Link>
           </div>
         </div>

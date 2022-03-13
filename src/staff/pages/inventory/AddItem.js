@@ -2,24 +2,47 @@ import React, { useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
 import { Form, Row, Col } from "react-bootstrap";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 const AddItem = () => {
-  const [date, setDate] = useState(new Date());
-
+  const navigate = useNavigate();
   const API_URL = "http://192.168.192.31:3000/";
   const [ itemTypes, setItemTypes ] = useState([]);
+  const [ id, setId ] = useState('');
+  const [ state, setState ] = useState(0);
+  const [ condition, setCondition ] = useState(0);
+
   useEffect(() => {
     const loadTypes = async () => {
-      let result = await fetch(API_URL+"itemtypes");
+      let result = await fetch(API_URL+"item_types");
       if(!result.ok) throw Error("Unable to get item types");
       let res = await result.json();
-      console.log(res.itemtypes);
-      setItemTypes(res.itemtypes);
+      console.log(res.item_type);
+      setItemTypes(res.item_type);
     }
     loadTypes();
   }, []) 
+
+  const addItem = async (e) => {
+    e.preventDefault();
+    const instance = {id, state, condition};
+    const postCmd = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(instance)
+    }
+    const response = await fetch(API_URL+"item_instance/addItem", postCmd);
+    if (!response.ok) throw Error('Please reload the app')
+    if (response.ok) {
+      console.log("New item posted.");
+      alert("New item posted successfully.");
+    }
+    navigate('/staff/inventory');
+  }
+
   return (
     <>
       <StaffNavBar />
@@ -32,12 +55,23 @@ const AddItem = () => {
           <div>
             <Form>
 
+              <Form.Group as={Row} className="mb-3" controlId="itemsNeeded">
+                <Form.Label column sm="2">
+                  ID (BarCode)
+                </Form.Label>
+                <Col sm="10">
+                    <Form.Control as="input" onChange={(e) => setId(e.target.value)} />
+                </Col>
+              </Form.Group>
+
               <Form.Group as={Row} className="mb-3" controlId="kitName">
                 <Form.Label column sm="2">
                   Item Type
                 </Form.Label>
                 <Col sm="10">
-                  <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                  <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                  onChange={(e) => setState(e.target.value)}>
+                    <option value="0">Select item type</option>
                     {
                       itemTypes.map((itemType) => (
                         <option value={itemType.typeID}>{itemType.model}</option>
@@ -47,12 +81,17 @@ const AddItem = () => {
                 </Col>
               </Form.Group>
 
-              <Form.Group as={Row} className="mb-3" controlId="itemsNeeded">
-                <Form.Label column sm="2">
+              <Form.Group as={Row} className="mb-3" controlId="kitName">
+              <Form.Label column sm="2">
                   Condition
                 </Form.Label>
                 <Col sm="10">
-                    <Form.Control as="input" />
+                  <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                  onChange={(e) => setCondition(e.target.value)}>
+                    <option value={0}>Select condition</option>
+                    <option value={1}>New</option>
+                    <option value={2}>Pre-Owned</option>
+                  </select>
                 </Col>
               </Form.Group>
             </Form>
@@ -65,7 +104,7 @@ const AddItem = () => {
           </div>
           <div class="submitKit">
             <Link to="">
-              <Button variant="primary">Submit</Button>{" "}
+              <Button variant="primary" onClick={addItem}>Submit</Button>{" "}
             </Link>
           </div>
         </div>
