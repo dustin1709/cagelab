@@ -11,6 +11,7 @@ const StaffReport = () => {
 
   const [ myUser, setMyUser ] = useState('');
   const [ list, setList ] = useState([]);
+  const [ boo, setBoo ] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -22,6 +23,9 @@ const StaffReport = () => {
     const loadTypes = async () => {
       let result = await fetch(API_URL);
       if(!result.ok) throw Error("Unable to get the borrower-item list");
+      if(result.ok) {
+        setBoo(true);
+      }
       let res = await result.json();
       console.log(res.borrower_item);
       setList(res.borrower_item);
@@ -55,12 +59,16 @@ const StaffReport = () => {
                   </thead>
                   <tbody>
                     {
-                      list.map((item) => 
+                      boo ? list.map((item) => 
                         <tr>
                           <td>{item.reservationID}</td>
                           <td>{item.checkout}</td>
                         </tr>
-                      )
+                      ) : 
+                      <tr>
+                        <td>2</td>
+                        <td>2022-01-10T14:25:00</td>
+                      </tr>
                     }
                   </tbody>
                 </table>
