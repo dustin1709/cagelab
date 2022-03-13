@@ -9,9 +9,9 @@ const AddItem = () => {
   const navigate = useNavigate();
   const API_URL = "http://192.168.192.31:3000/";
   const [ itemTypes, setItemTypes ] = useState([]);
-  const [ id, setId ] = useState('');
-  const [ state, setState ] = useState(0);
-  const [ condition, setCondition ] = useState(0);
+  const [ itemID, setItemID ] = useState('');
+  const [ typeID, setTypeID ] = useState(0);
+  const [ conditionID, setConditionID ] = useState(0);
 
   useEffect(() => {
     const loadTypes = async () => {
@@ -26,7 +26,8 @@ const AddItem = () => {
 
   const addItem = async (e) => {
     e.preventDefault();
-    const instance = {id, state, condition};
+    const instance = {itemID, typeID, conditionID};
+    console.log(JSON.stringify(instance));
     const postCmd = {
       method: 'POST',
       headers: {
@@ -60,7 +61,7 @@ const AddItem = () => {
                   ID (BarCode)
                 </Form.Label>
                 <Col sm="10">
-                    <Form.Control as="input" onChange={(e) => setId(e.target.value)} />
+                    <Form.Control as="input" onChange={(e) => setItemID(e.target.value)} />
                 </Col>
               </Form.Group>
 
@@ -70,7 +71,7 @@ const AddItem = () => {
                 </Form.Label>
                 <Col sm="10">
                   <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
-                  onChange={(e) => setState(e.target.value)}>
+                  onChange={(e) => setTypeID(e.target.value)}>
                     <option value="0">Select item type</option>
                     {
                       itemTypes.map((itemType) => (
@@ -87,10 +88,10 @@ const AddItem = () => {
                 </Form.Label>
                 <Col sm="10">
                   <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
-                  onChange={(e) => setCondition(e.target.value)}>
-                    <option value={0}>Select condition</option>
-                    <option value={1}>New</option>
-                    <option value={2}>Pre-Owned</option>
+                  onChange={(e) => setConditionID(e.target.value)}>
+                    <option value="0">Select condition</option>
+                    <option value="1">New</option>
+                    <option value="2">Pre-Owned</option>
                   </select>
                 </Col>
               </Form.Group>

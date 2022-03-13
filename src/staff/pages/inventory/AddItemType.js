@@ -8,15 +8,16 @@ import Button from "react-bootstrap/Button";
 const AddItemType = () => {
   const [ name, setName ] = useState('');
   const [ model, setModel ] = useState('');
-  const [ desc, setDesc ] = useState('');
+  const [ description, setDescription ] = useState('');
   const [ cost, setCost ] = useState(0);
 
   const navigate = useNavigate();
   const API_URL = "http://192.168.192.31:3000/";
-  
+
   const addItemType = async (e) => {
     e.preventDefault();
-    const instance = {name, model, desc, cost};
+    const instance = {name, model, description, cost};
+    console.log(JSON.stringify(instance));
     const postCmd = {
       method: 'POST',
       headers: {
@@ -68,7 +69,7 @@ const AddItemType = () => {
                   Description
                 </Form.Label>
                 <Col sm="10">
-                    <Form.Control as="input" onChange={(e) => setDesc(e.target.value)} />
+                    <Form.Control as="input" onChange={(e) => setDescription(e.target.value)} />
                 </Col>
               </Form.Group>
 
