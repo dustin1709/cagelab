@@ -27,8 +27,8 @@ const Kit = () => {
         setBoo(true);
       }
       let res = await result.json();
-      console.log(res.borrower_item);
-      setList(res.borrower_item);
+      console.log(res.kit_type);
+      setList(res.Kit_type);
     };
     loadTypes();
   }, []);
