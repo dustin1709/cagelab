@@ -4,8 +4,37 @@ import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Kit = () => {
+  const API_URL = "http://192.168.192.31:3000/kit_types";
+
+  const [myUser, setMyUser] = useState("");
+  const [list, setList] = useState([]);
+  const [boo, setBoo] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      setMyUser(localStorage.getItem("user"));
+    }
+  }, []);
+
+  useEffect(() => {
+    const loadTypes = async () => {
+      let result = await fetch(API_URL);
+      if (!result.ok) throw Error("Unable to get the kit_type list");
+      if (result.ok) {
+        setBoo(true);
+      }
+      let res = await result.json();
+      console.log(res.borrower_item);
+      setList(res.borrower_item);
+    };
+    loadTypes();
+  }, []);
+
+  const ref = React.createRef();
+
   return (
     <>
       <NavBar />
@@ -13,7 +42,6 @@ const Kit = () => {
         <div className="pageTitle">
           <h3>Kit</h3>
         </div>
-
         <div class="kitSelection">
           <Form.Select
             aria-label="Default select example"
@@ -30,49 +58,28 @@ const Kit = () => {
           </Link>
         </div>
 
-        <div class="kitTable">
+        <div class="kitTable" ref={ref}>
           <Table responsive="sm">
             <thead>
               <tr>
-                <th>#</th>
-                <th>Course</th>
-                <th>Kit Name</th>
-                <th>Details</th>
+                <th scope="col">kitID</th>
+                <th scope="col">name</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>
-                  <Link to="">
-                    <Button variant="secondary">View Details</Button>{" "}
-                  </Link>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>
-                  {" "}
-                  <Link to="">
-                    <Button variant="secondary">View Details</Button>{" "}
-                  </Link>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>
-                  {" "}
-                  <Link to="">
-                    <Button variant="secondary">View Details</Button>{" "}
-                  </Link>
-                </td>
-              </tr>
+              {boo ? (
+                list.map((item) => (
+                  <tr>
+                    <td>{item.kitID}</td>
+                    <td>{item.name}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td>2</td>
+                  <td>2022-01-10T14:25:00</td>
+                </tr>
+              )}
             </tbody>
           </Table>
         </div>
