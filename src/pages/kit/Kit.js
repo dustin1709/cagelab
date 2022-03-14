@@ -64,6 +64,7 @@ const Kit = () => {
               <tr>
                 <th scope="col">kitID</th>
                 <th scope="col">name</th>
+                <th scope="col">details</th>
               </tr>
             </thead>
             <tbody>
@@ -72,12 +73,24 @@ const Kit = () => {
                   <tr>
                     <td>{item.kitID}</td>
                     <td>{item.name}</td>
+                    <td>
+                      {" "}
+                      <Link to="">
+                        <Button variant="secondary">View Details</Button>{" "}
+                      </Link>
+                    </td>
                   </tr>
                 ))
               ) : (
                 <tr>
                   <td>2</td>
                   <td>2022-01-10T14:25:00</td>
+                  <td>
+                    {" "}
+                    <Link to="">
+                      <Button variant="secondary">View Details</Button>{" "}
+                    </Link>
+                  </td>
                 </tr>
               )}
             </tbody>
