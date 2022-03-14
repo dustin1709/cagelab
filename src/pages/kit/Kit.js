@@ -28,7 +28,7 @@ const Kit = () => {
       }
       let res = await result.json();
       console.log(res.kit_type);
-      setList(res.Kit_type);
+      setList(res.kit_type);
     };
     loadTypes();
   }, []);
