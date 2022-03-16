@@ -46,11 +46,11 @@ function App() {
           <Route path="/staff/reservation" element={<StaffReservation />} />
           <Route path="/staff/kit" element={<StaffKit />} />
           <Route path="/staff/inventory" element={<Inventory />} />
-          <Route path="/staff/searchbyid" element={<SearchByID />} />
+          <Route path="/staff/checkin/searchbyid" element={<SearchByID />} />
           <Route path="/staff/report" element={<StaffReport />} />
-          <Route path="/staff/addItem" element={<AddItem />} />
-          <Route path="/staff/addItemType" element={<AddItemType />} />
-          <Route path="/staff/viewitem" element={<ViewItem />} />
+          <Route path="/staff/inventory/addItem" element={<AddItem />} />
+          <Route path="/staff/inventory/addItemType" element={<AddItemType />} />
+          <Route path="/staff/inventory/viewitem" element={<ViewItem />} />
         </Routes>
       </main>
     </div>

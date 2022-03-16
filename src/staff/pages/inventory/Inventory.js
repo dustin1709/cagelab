@@ -68,13 +68,13 @@ const Inventory = () => {
           <div style={{paddingTop: "1%", clear: 'both'}}>
             <label>else</label>
             <div style={{paddingTop: "2%", clear: 'both'}}></div>
-            <Link to="/staff/addItem">
+            <Link to="/staff/inventory/addItem">
               <Button variant="primary" id="newItem">
                 Add New Item
               </Button>
             </Link>
             <div style={{paddingTop: "0.5%", clear: 'both'}}></div>
-            <Link to="/staff/addItemType">
+            <Link to="/staff/inventory/addItemType">
               <Button variant="dark" id="newItemType">
                 Add New Item Type
               </Button>

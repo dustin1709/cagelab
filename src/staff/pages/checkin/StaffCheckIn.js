@@ -27,8 +27,8 @@ const StaffCheckIn = () => {
               </Link>
             </div>
             <div className="TabButton">
-              <Link to="/staff/searchbyid" style={{textDecoration: "none", color: "black"}}>
-                Search Item by ID
+              <Link to="/staff/checkin/searchbyid" style={{textDecoration: "none", color: "black"}}>
+                Enter Item ID (Barcode)
               </Link>
             </div>
           </div>
