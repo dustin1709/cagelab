@@ -23,7 +23,6 @@ const Inventory = () => {
       let result = await fetch(API_URL);
       if(!result.ok) throw Error("Unable to get item types");
       let res = await result.json();
-      console.log(res.item_type);
       setItemTypes(res.item_type);
       localStorage.setItem('items-list', JSON.stringify(res.itemtypes))
     }

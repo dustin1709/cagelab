@@ -29,6 +29,7 @@ const AddItem = () => {
     const instance = {itemID, typeID, conditionID};
     console.log(JSON.stringify(instance));
     const postCmd = {
+      
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
