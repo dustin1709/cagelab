@@ -51,7 +51,7 @@ const Inventory = () => {
         <div style={{padding: '3%', margin: '2%'}}>
           <h3>What type of item do you want to see?</h3>
           <div style={{width: "30%", clear: 'both'}}>
-            <label>Choose item type</label>
+            <label>Choose Model</label>
             <form onSubmit={next}>
               <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
               onChange={(e) => setState(e.target.value)}>

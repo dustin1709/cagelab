@@ -43,6 +43,17 @@ const Reservation = () => {
     return date;
   }
 
+  const [ itemTypes, setItemTypes ] = useState([]);
+  useEffect(() => {
+    const loadTypes = async () => {
+      let result = await fetch("http://192.168.192.31:3000/item_types");
+      if(!result.ok) throw Error("Unable to get item types");
+      let res = await result.json();
+      setItemTypes(res.item_type);
+    }
+    loadTypes();
+  }, [])
+
   const submit = async (e) => {
     e.preventDefault();
     const url = API_URL+status+"/"+uniID;
@@ -50,7 +61,9 @@ const Reservation = () => {
     let result = await fetch(url);
     if (!result.ok) throw Error('Did not receive reservation data');
     let res = await result.json();
-    
+    let result2 = await fetch("http://192.168.192.31:3000/reservation_contents/reservation/all/"+res.borrower_item[0]);
+    let res2 = await result2.json();
+    setList(res2.reservation_contents);
   }
 
   return (
@@ -79,16 +92,12 @@ const Reservation = () => {
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">Order ID</th>
                   <th scope="col">Item Name</th>
                   <th scope="col">Quantity</th>
-                  <th scope="col">Borrow Date</th>
-                  <th scope="col">Return By</th>
-                  <th scope="col">Picked up (Yes/No)</th>
                 </tr>
               </thead>
               <tbody>
-                {
+                {/* {
                   localStorage.getItem("user-item-checked") ?
                   <tr>
                     <td>{orderID+borrower}</td>
@@ -99,6 +108,17 @@ const Reservation = () => {
                     <td>No</td>
                   </tr> :
                   <tr></tr>
+                } */}
+                {
+                  list.map((list_item) => (
+                    <tr>
+                      {itemTypes.filter((itemType) => (
+                        itemType.typeID === list_item.typeID ? 
+                        <td>{itemType.model}</td> : <td></td>
+                      ))}
+                      <td>{list_item.quantity}</td>
+                    </tr>
+                  ))
                 }
               </tbody>
             </table>

@@ -42,7 +42,7 @@ const SearchResults = () => {
             <form onSubmit={next}>
               <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
               onChange={(e) => setState(e.target.value)}>
-                <option value="0">Select item type</option>
+                <option value="0">Select Model</option>
                 {
                   itemTypes.map((itemType) => (
                     <option value={itemType.typeID}>{itemType.model}</option>
