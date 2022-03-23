@@ -12,6 +12,28 @@ const Home = () => {
         setMyUser(localStorage.getItem("user"));
     }
   }, [])
+  const [ list, setList ] = useState([]);
+  const [ itemTypes, setItemTypes ] = useState([]);
+  useEffect(() => {
+    const loadTypes = async () => {
+      let result = await fetch("http://192.168.192.31:3000/item_types");
+      if(!result.ok) throw Error("Unable to get item types");
+      let res = await result.json();
+      setItemTypes(res.item_type);
+    }
+    const loadTypes2 = async () => {
+      const url = "http://192.168.192.31:3000/borrower_item/user/unpickedupReservation/"+localStorage.getItem("user-id");
+      console.log("GET: "+url);
+      let result = await fetch(url);
+      if (!result.ok) throw Error('Did not receive reservation data');
+      let res = await result.json();
+      let result2 = await fetch("http://192.168.192.31:3000/reservation_contents/reservation/all/"+res.borrower_item[0].reservationID);
+      let res2 = await result2.json();
+      setList(res2.reservation_contents);
+    }
+    loadTypes2();
+    loadTypes();
+  }, [])
 
   return (
     <>
@@ -31,24 +53,26 @@ const Home = () => {
           <div style={{ padding: "1%", clear: "both" }}></div>
         </div>
 
-        <div style={{ margin: "2%" }}>
-          <div className="HomeLeft">
-            <h5 style={{ textAlign: "center" }}>My Reservation</h5>
+        <div className="HomeLeft">
+          <h5 style={{ textAlign: "center" }}>Pick up Pending</h5>
             <div class="viewDetailsButton">
+            
+                {
+                  list.map((list_item) => (
+                    <ul style={{ textAlign: "left" }}>
+                      <li>{
+                      itemTypes.map((itemType) => (
+                        itemType.typeID === list_item.typeID ?
+                        itemType.model : ""
+                        ))
+                      }</li>
+                    </ul>
+                  ))
+                }
               <Link to="/reservation">
                 <Button variant="secondary">View Details</Button>{" "}
               </Link>
             </div>
-          </div>
-
-          <div className="HomeRight">
-            <h5 style={{ textAlign: "center" }}>My Shopping Cart</h5>
-            <div class="viewDetailsButton">
-              <Link to="/cart">
-                <Button variant="secondary">View Details</Button>{" "}
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
     </>
