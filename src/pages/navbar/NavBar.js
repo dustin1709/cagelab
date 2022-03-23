@@ -18,7 +18,7 @@ const NavBar = () => {
 
     const logOut = async (e) => {
         e.preventDefault();
-        localStorage.removeItem('user');
+        localStorage.clear();
         navigate('/');
     }
 

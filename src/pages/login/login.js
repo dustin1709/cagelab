@@ -26,6 +26,7 @@ const Login = () => {
             if(username == user.username && password == user.password) {
                 navigate('/dashboard');
                 localStorage.setItem("user", user.username);
+                localStorage.setItem("user-id", user.universityID);
             } else {
                 setErrSMS('Invalid credentials. Please try again.');
             }
