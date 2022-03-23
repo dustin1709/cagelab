@@ -6,15 +6,19 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 const Reservation = () => {
   const API_URL = "http://192.168.192.31:3000/borrower_item/user/";
   const [borrower, setBorrower] = useState('');
+  const [uniID, setUniID] = useState('');
   const [itemName, setItemName] = useState('');
   const [ orderID, setOrderID ] = useState('');
   const [ today, setToday ] = useState('');
   const [ status, setStatus ] = useState('unpickedupReservation');
   const [ tomorrow, setTomorrow ] = useState('');
 
+  const [ list, setList ] = useState([]);
+
   useEffect(() => {
-    if (localStorage.getItem("user")) {
+    if (localStorage.getItem("user") && localStorage.getItem("user-id")) {
       setBorrower(localStorage.getItem("user"));
+      setUniID(localStorage.getItem("user-id"))
     }
     if (localStorage.getItem("user-item-checked")) {
       setItemName(localStorage.getItem("user-item-checked"));
@@ -41,7 +45,12 @@ const Reservation = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    console.log(status);
+    const url = API_URL+status+"/"+uniID;
+    console.log("GET: "+url);
+    let result = await fetch(url);
+    if (!result.ok) throw Error('Did not receive reservation data');
+    let res = await result.json();
+    
   }
 
   return (
