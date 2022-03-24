@@ -31,12 +31,13 @@ const SearchByID = () => {
   const checkin = async (e) => {
     e.preventDefault();
     console.log("checking in item: "+itemID);
-    const result = await fetch(API_URL+"borrower_content/item/reservation/"+itemID);
+    const result = await fetch(API_URL+"borrower_contents/item/reservation/"+itemID);
     if(result.ok) {
       let respond = await result.json();
-      let reservationID = respond.sth;
-      let today = formatDate(new Date());
-      const instance = {reservationID, itemID, today};
+      let reservationID = respond.borrower_contents[0].reservationID;
+      let checkin = formatDate(new Date());
+      let conditionID = 1;
+      const instance = {reservationID, itemID: parseInt(itemID), checkin, conditionID};
       console.log(JSON.stringify(instance));
       const patchCmd = {
         method: 'PATCH',
