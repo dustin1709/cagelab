@@ -17,13 +17,39 @@ const SearchByID = () => {
     }
   }, [])
 
+  function formatDate(date) {
+    var dd = String(date.getDate()).padStart(2, '0');
+    var mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = date.getFullYear();
+    function checkTime(i) {
+      return (i < 10) ? "0" + i : i;
+    }
+    date = yyyy + "-" + mm + "-" + dd + " " + checkTime(date.getHours()) + ":" + checkTime(date.getMinutes()) + ":" + checkTime(date.getSeconds());
+    return date;
+  }
+
   const checkin = async (e) => {
     e.preventDefault();
     console.log("checking in item: "+itemID);
-    const res = await fetch(API_URL+"borrower_content/item/reservation/"+itemID);
-    if(res.ok) {
-      alert("Reservation matched. Item: "+ itemID +" checked in");
-      navigate("/staff/checkin");
+    const result = await fetch(API_URL+"borrower_content/item/reservation/"+itemID);
+    if(result.ok) {
+      let respond = await result.json();
+      let reservationID = respond.sth;
+      let today = formatDate(new Date());
+      const instance = {reservationID, itemID, today};
+      console.log(JSON.stringify(instance));
+      const patchCmd = {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(instance)
+      }
+      const response = await fetch(API_URL+"borrower_contents/checkin", patchCmd);
+      if (response.ok) {
+        alert("Reservation matched. Item: "+ itemID +" checked in");
+        navigate("/staff/checkin");
+      }
     }
   }
 
