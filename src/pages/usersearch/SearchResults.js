@@ -14,7 +14,7 @@ const SearchResults = () => {
       let res = await result.json();
       console.log(res.item_type);
       setItemTypes(res.item_type);
-      localStorage.setItem('user-items-list', JSON.stringify(res.itemtypes))
+      //localStorage.setItem('user-items-list', JSON.stringify(res.itemtypes))
     }
     loadTypes();
   }, [])
@@ -33,25 +33,12 @@ const SearchResults = () => {
   //   }
   // };
 
-  const next = async (state) => {
-    if (state !== 0) {
-      console.log("Option value is " + state);
-      if (!localStorage.getItem('user-typeID')) {
-        localStorage.setItem('user-typeID', state);
-      } else {
-        localStorage.removeItem('user-typeID');
-        localStorage.setItem('user-typeID', state);
-      }
-      navigate('/search/viewitem');
-    }
-  };
-
   return (
     <>
         <NavBar />
         <div className='mainContainerRight'>
           <div style={{padding: '3%', margin: '2%'}}>
-            <h3>Select a type of item</h3>
+            <h3>Choose a model</h3>
             {/* <form onSubmit={next}>
               <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
               onChange={(e) => setState(e.target.value)}>
@@ -66,7 +53,10 @@ const SearchResults = () => {
             </form> */}
             {
               itemTypes.map((itemType) => (
-                <button className="btn btn-info"  onClick={next(itemType.typeID)}>{itemType.model}</button>
+                <>
+                  <Link className="btn btn-info" role="button" to={`/search/viewitem/${itemType.typeID}`}>{itemType.model}</Link>
+                  <div style={{clear: 'both', padding: '1%'}}></div>
+                </>
               ))
             }
           </div>

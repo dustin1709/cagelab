@@ -33,7 +33,7 @@ function App() {
           <Route path="/cart" element={<Checkout />} />
           <Route path="/kit" element={<Kit />} />
           <Route path="/createkit" element={<CreateKit />} />
-          <Route path="/search/viewitem" element={<ItemDetails/>} />
+          <Route path="/search/viewitem/:id" element={<ItemDetails/>} />
 
           {/* Staff section */}
           <Route path="/staff" element={<StaffLogin />} />
