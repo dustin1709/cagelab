@@ -6,6 +6,10 @@ const SearchResults = () => {
   const API_URL = "http://192.168.192.31:3000/item_types";
   const navigate = useNavigate();
   const [ state, setState ] = useState(0);
+
+  const [search, setSearch] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
   const [ itemTypes, setItemTypes ] = useState([]);
   useEffect(() => {
     const loadTypes = async () => {
@@ -18,6 +22,14 @@ const SearchResults = () => {
     }
     loadTypes();
   }, [])
+
+  useEffect(() => {
+    const filteredResults = itemTypes.filter((itemType) =>
+      ((itemType.body).toLowerCase()).includes(itemType.toLowerCase())
+      || ((itemType.title).toLowerCase()).includes(itemType.toLowerCase()));
+
+    setSearchResults(filteredResults.reverse());
+  }, [itemTypes, search])
 
   // const next = async (e) => {
   //   e.preventDefault();
@@ -51,6 +63,17 @@ const SearchResults = () => {
               </select>
               <button type="submit" id="login-button" className="btn btn-secondary btn-lg btn-block">Next</button>
             </form> */}
+
+            <form className="form-outline" onSubmit={(e) => e.preventDefault()}>
+                <input
+                    className='form-control'
+                    id="form1"
+                    type="text"
+                    placeholder="Search items"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+            </form>
             {
               itemTypes.map((itemType) => (
                 <>
