@@ -19,8 +19,21 @@ const SearchResults = () => {
     loadTypes();
   }, [])
 
-  const next = async (e) => {
-    e.preventDefault();
+  // const next = async (e) => {
+  //   e.preventDefault();
+  //   if (state !== 0) {
+  //     console.log("Option value is " + state);
+  //     if (!localStorage.getItem('user-typeID')) {
+  //       localStorage.setItem('user-typeID', state);
+  //     } else {
+  //       localStorage.removeItem('user-typeID');
+  //       localStorage.setItem('user-typeID', state);
+  //     }
+  //     navigate('/search/viewitem');
+  //   }
+  // };
+
+  const next = async (state) => {
     if (state !== 0) {
       console.log("Option value is " + state);
       if (!localStorage.getItem('user-typeID')) {
@@ -39,7 +52,7 @@ const SearchResults = () => {
         <div className='mainContainerRight'>
           <div style={{padding: '3%', margin: '2%'}}>
             <h3>Select a type of item</h3>
-            <form onSubmit={next}>
+            {/* <form onSubmit={next}>
               <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
               onChange={(e) => setState(e.target.value)}>
                 <option value="0">Select Model</option>
@@ -50,7 +63,12 @@ const SearchResults = () => {
                 }
               </select>
               <button type="submit" id="login-button" className="btn btn-secondary btn-lg btn-block">Next</button>
-            </form>
+            </form> */}
+            {
+              itemTypes.map((itemType) => (
+                <button className="btn btn-info"  onClick={next(itemType.typeID)}>{itemType.model}</button>
+              ))
+            }
           </div>
         </div>
     </>
