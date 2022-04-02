@@ -28,6 +28,11 @@ const StaffNavBar = () => {
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink to="/staff/checkout" activeclassname="active" className="nav-link text-white">
+                        Check out
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink to="/staff/checkin" activeclassname="active" className="nav-link text-white">
                         Check in
                     </NavLink>

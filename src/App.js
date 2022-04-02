@@ -21,6 +21,7 @@ import AddItem from "./staff/pages/inventory/AddItem";
 import AddItemType from "./staff/pages/inventory/AddItemType";
 import ViewItem from "./staff/pages/inventory/ViewItem";
 import ItemDetails from "./pages/usersearch/ItemDetails";
+import StaffCheckOut from "./staff/pages/checkout/StaffCheckOut";
 
 function App() {
   return (
@@ -29,18 +30,19 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Home />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/search/results" element={<SearchResults />} />
+          {/* <Route path="/search" element={<Search />} /> */}
+          <Route path="/search" element={<SearchResults />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/cart" element={<Checkout />} />
           <Route path="/kit" element={<Kit />} />
           <Route path="/createkit" element={<CreateKit />} />
-          <Route path="/viewitem" element={<ItemDetails/>} />
+          <Route path="/search/viewitem" element={<ItemDetails/>} />
 
           {/* Staff section */}
           <Route path="/staff" element={<StaffLogin />} />
           <Route path="/staff/dashboard" element={<StaffDashboard />} />
           <Route path="/staff/search" element={<StaffSearch />} />
+          <Route path="/staff/checkout" element={<StaffCheckOut />} />
           <Route path="/staff/checkin" element={<StaffCheckIn />} />
           <Route path="/staff/cart" element={<StaffCart />} />
           <Route path="/staff/reservation" element={<StaffReservation />} />

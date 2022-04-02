@@ -29,7 +29,7 @@ const SearchResults = () => {
         localStorage.removeItem('user-typeID');
         localStorage.setItem('user-typeID', state);
       }
-      navigate('/viewitem');
+      navigate('/search/viewitem');
     }
   };
 

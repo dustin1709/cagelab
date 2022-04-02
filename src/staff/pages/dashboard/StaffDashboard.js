@@ -37,22 +37,19 @@ const StaffDashboard = () => {
         </div>
 
         <div className="page-row">
-          <div className="dashboard-comp">
-            <h4>Reservation</h4>
-            <ul>
-
-            </ul>
-            <Link to="/staff/reservation">
-              <Button variant="secondary">View Details</Button>{" "}
+          <div className="DButton">
+            <Link to="/staff/reservation" className="nav-link text-black">
+            Reservation
             </Link>
           </div>
-          <div className="dashboard-comp">
-            <h4>Kit Request</h4>
-            <ul>
-
-            </ul>
-            <Link to="/staff/kit">
-              <Button variant="secondary">View Details</Button>{" "}
+          <div className="DButton">
+            <Link to="/staff/kit" className="nav-link text-black">
+              Kit Request
+            </Link>
+          </div>
+          <div className="DButton">
+            <Link to="/staff/checkout" className="nav-link text-black">
+              Check out
             </Link>
           </div>
         </div>
