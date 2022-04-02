@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 import Login from "./pages/login/login";
 import Home from "./pages/userindex/Home";
 import Reservation from "./pages/reservation/Reservation";
@@ -22,13 +23,36 @@ import ItemDetails from "./pages/usersearch/ItemDetails";
 import StaffCheckOut from "./staff/pages/checkout/StaffCheckOut";
 
 function App() {
+  const API_URL = "http://192.168.192.31:3000/item_types";
+  const [ itemTypes, setItemTypes ] = useState([]);
+  useEffect(() => {
+    const loadTypes = async () => {
+      let result = await fetch(API_URL);
+      if(!result.ok) throw Error("Unable to get item types");
+      let res = await result.json();
+      console.log(res.item_type);
+      setItemTypes(res.item_type);
+      //localStorage.setItem('user-items-list', JSON.stringify(res.itemtypes))
+    }
+    loadTypes();
+  }, [])
+  const [search, setSearch] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  useEffect(() => {
+    const filteredResults = itemTypes.filter((itemType) =>
+      ((itemType.model).toLowerCase()).includes(search.toLowerCase()));
+
+    setSearchResults(filteredResults.reverse());
+  }, [itemTypes, search])
+
   return (
     <div className="App">
       <main className="App">
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Home />} />
-          <Route path="/search" element={<SearchResults />} />
+          <Route path="/search" element={<SearchResults itemTypes={searchResults}
+          search={search} setSearch={setSearch} />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/cart" element={<Checkout />} />
           <Route path="/kit" element={<Kit />} />

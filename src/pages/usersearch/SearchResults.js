@@ -2,34 +2,10 @@ import React, { useState, useEffect } from 'react';
 import NavBar from '../navbar/NavBar';
 import { Link, useNavigate, useLocation, Navigate } from 'react-router-dom';
 
-const SearchResults = () => {
-  const API_URL = "http://192.168.192.31:3000/item_types";
+const SearchResults = ({itemTypes, search, setSearch}) => {
+  
   const navigate = useNavigate();
   const [ state, setState ] = useState(0);
-
-  const [search, setSearch] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-
-  const [ itemTypes, setItemTypes ] = useState([]);
-  useEffect(() => {
-    const loadTypes = async () => {
-      let result = await fetch(API_URL);
-      if(!result.ok) throw Error("Unable to get item types");
-      let res = await result.json();
-      console.log(res.item_type);
-      setItemTypes(res.item_type);
-      //localStorage.setItem('user-items-list', JSON.stringify(res.itemtypes))
-    }
-    loadTypes();
-  }, [])
-
-  useEffect(() => {
-    const filteredResults = itemTypes.filter((itemType) =>
-      ((itemType.body).toLowerCase()).includes(itemType.toLowerCase())
-      || ((itemType.title).toLowerCase()).includes(itemType.toLowerCase()));
-
-    setSearchResults(filteredResults.reverse());
-  }, [itemTypes, search])
 
   // const next = async (e) => {
   //   e.preventDefault();
@@ -74,12 +50,14 @@ const SearchResults = () => {
                     onChange={(e) => setSearch(e.target.value)}
                 />
             </form>
+            <div style={{clear: 'both', padding: '1.5%'}}></div>
             {
               itemTypes.map((itemType) => (
+                (itemType.model !== "") ? (
                 <>
                   <Link className="btn btn-info" role="button" to={`/search/viewitem/${itemType.typeID}`}>{itemType.model}</Link>
                   <div style={{clear: 'both', padding: '1%'}}></div>
-                </>
+                </>) : <></>
               ))
             }
           </div>
