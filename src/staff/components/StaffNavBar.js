@@ -23,11 +23,6 @@ const StaffNavBar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/staff/search" activeclassname="active" className="nav-link text-white">
-                        Search Item
-                    </NavLink>
-                </li>
-                <li>
                     <NavLink to="/staff/checkout" activeclassname="active" className="nav-link text-white">
                         Check out
                     </NavLink>

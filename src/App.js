@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/login/login";
 import Home from "./pages/userindex/Home";
-import Search from "./pages/usersearch/Search";
 import Reservation from "./pages/reservation/Reservation";
 import Checkout from "./pages/shoppingcart/Checkout";
 import Kit from "./pages/kit/Kit";
@@ -9,7 +8,6 @@ import CreateKit from "./pages/kit/CreateKit";
 import SearchResults from "./pages/usersearch/SearchResults";
 import StaffLogin from "./staff/pages/login/StaffLogin";
 import StaffDashboard from "./staff/pages/dashboard/StaffDashboard";
-import StaffSearch from "./staff/pages/search/StaffSearch";
 import StaffCheckIn from "./staff/pages/checkin/StaffCheckIn";
 import StaffCart from "./staff/pages/cart/StaffCart";
 import StaffReservation from "./staff/pages/reservation/StaffReservation";
@@ -30,7 +28,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Home />} />
-          {/* <Route path="/search" element={<Search />} /> */}
           <Route path="/search" element={<SearchResults />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/cart" element={<Checkout />} />
@@ -41,7 +38,6 @@ function App() {
           {/* Staff section */}
           <Route path="/staff" element={<StaffLogin />} />
           <Route path="/staff/dashboard" element={<StaffDashboard />} />
-          <Route path="/staff/search" element={<StaffSearch />} />
           <Route path="/staff/checkout" element={<StaffCheckOut />} />
           <Route path="/staff/checkin" element={<StaffCheckIn />} />
           <Route path="/staff/cart" element={<StaffCart />} />
