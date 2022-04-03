@@ -73,7 +73,8 @@ function App() {
           <Route path="/staff/cart" element={<StaffCart />} />
           <Route path="/staff/reservation" element={<StaffReservation />} />
           <Route path="/staff/kit" element={<StaffKit />} />
-          <Route path="/staff/inventory" element={<Inventory />} />
+          <Route path="/staff/inventory" element={<Inventory itemTypes={searchResults}
+          search={search} setSearch={setSearch} />} />
           <Route path="/staff/checkin/searchbyid" element={<SearchByID />} />
           <Route path="/staff/report" element={<StaffReport />} />
           <Route path="/staff/inventory/addItem" element={<AddItem />} />

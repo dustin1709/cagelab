@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, Navigate, Link } from 'react-router-dom';
+import { useNavigate, Navigate, Link, useParams } from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
@@ -12,6 +12,7 @@ const ViewItem = () => {
   const [ items, setItems ] = useState([]);
   const [ amount, setAmount ] = useState(0);
   const [ borrower, setBorrower ] = useState('');
+  const {id} = useParams();
   useEffect(() => {
     if (localStorage.getItem("user")) {
         setMyUser(localStorage.getItem("user"));
@@ -23,9 +24,9 @@ const ViewItem = () => {
 
   useEffect(() => {
     const loadTypes = async () => {
-      let result = await fetch(API_URL + localStorage.getItem("typeID"));
-      let result2 = await fetch(API_URL_INST + localStorage.getItem("typeID"));
-      console.log("Fetching " + API_URL + "/" + localStorage.getItem("typeID"));
+      let result = await fetch(API_URL + id);
+      let result2 = await fetch(API_URL_INST + id);
+      console.log("Fetching " + API_URL + "/" + id);
       if(!result.ok) throw Error("Unable to get item types");
       if(!result2.ok) throw Error("Unable to get item instances");
       let res = await result.json();
