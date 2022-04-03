@@ -44,7 +44,7 @@ const ItemDetails = () => {
     e.preventDefault();
     if (quantity > 0) {
       localStorage.setItem('selected-item', id);
-      localStorage.setItem('selected-item-name', items[id].model);
+      localStorage.setItem('selected-item-name', items[0].model);
       localStorage.setItem('amount', quantity);
       localStorage.setItem('date', formatDate(new Date()));
     }

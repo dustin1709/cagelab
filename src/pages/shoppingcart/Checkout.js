@@ -20,7 +20,7 @@ const Checkout = () => {
     if (localStorage.getItem("selected-item")) {
       setName(localStorage.getItem("selected-item-name"));
       setId(localStorage.getItem("selected-item"));
-      setDate(localStorage.getItem("selected-item"));
+      setDate(localStorage.getItem("date"));
       setQuantity(localStorage.getItem("amount"));
     }
   }, [])
@@ -37,7 +37,7 @@ const Checkout = () => {
   const checkout = async (e) => {
     e.preventDefault();
     if (localStorage.getItem("selected-item")) {
-      const instance = {UniversityID: borrower, reservationTime: date};
+      const instance = {universityID: borrower, reservationTime: date};
       console.log(JSON.stringify(instance));
       const postCmd = {
         method: 'POST',
@@ -89,10 +89,10 @@ const Checkout = () => {
               </thead>
               <tbody>
                 {
-                  localStorage.getItem('user-item') ? 
+                  localStorage.getItem('selected-item') ? 
                   <tr>
                     <td>{name}</td>
-                    <td>1</td>
+                    <td>{quantity}</td>
                     <td><button type="button" className="btn btn-danger" onClick={remove}><FaIcons.FaTrashAlt /></button></td>
                   </tr> : 
                   <tr></tr>
