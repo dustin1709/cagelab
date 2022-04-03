@@ -32,7 +32,13 @@ function App() {
       let res = await result.json();
       console.log(res.item_type);
       setItemTypes(res.item_type);
-      //localStorage.setItem('user-items-list', JSON.stringify(res.itemtypes))
+      if (!localStorage.getItem('all-items', JSON.stringify(res.itemtypes))) {
+        localStorage.setItem('all-items', JSON.stringify(res.itemtypes));
+      }
+      if (localStorage.getItem('all-items', JSON.stringify(res.itemtypes))) {
+        localStorage.removeItem('all-items');
+        localStorage.setItem('all-items', JSON.stringify(res.itemtypes));
+      }
     }
     loadTypes();
   }, [])

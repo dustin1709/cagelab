@@ -55,9 +55,10 @@ const Reservation = () => {
       let result = await fetch(url);
       if (!result.ok) throw Error('Did not receive reservation data');
       let res = await result.json();
-      let result2 = await fetch("http://192.168.192.31:3000/reservation_contents/reservation/all/"+res.borrower_item[0].reservationID);
-      let res2 = await result2.json();
-      setList(res2.reservation_contents);
+      setList(res.borrower_item);
+      // let result2 = await fetch("http://192.168.192.31:3000/reservation_contents/reservation/all/"+res.borrower_item[0].reservationID);
+      // let res2 = await result2.json();
+      // setList(res2.reservation_contents);
     }
     loadTypes2();
     loadTypes();
@@ -70,12 +71,14 @@ const Reservation = () => {
     let result = await fetch(url);
     if (!result.ok) {
       setList([]);
+    } else {
+      let res = await result.json();
+      setList(res.borrower_item);
     }
-    let res = await result.json();
-    let result2 = await fetch("http://192.168.192.31:3000/reservation_contents/reservation/all/"+res.borrower_item[0].reservationID);
-    let res2 = await result2.json();
-    console.log(res2.reservation_contents);
-    setList(res2.reservation_contents);
+    // let result2 = await fetch("http://192.168.192.31:3000/reservation_contents/reservation/all/"+res.borrower_item[0].reservationID);
+    // let res2 = await result2.json();
+    // console.log(res2.reservation_contents);
+    // setList(res2.reservation_contents);
   }
 
   return (
@@ -121,7 +124,7 @@ const Reservation = () => {
                   <tr></tr>
                 } */}
                 {
-                  list.map((list_item) => (
+                  (list.length > 0) ? list.map((list_item) => (
                     <tr>
                       <td>{
                       itemTypes.map((itemType) => (
@@ -131,7 +134,7 @@ const Reservation = () => {
                       }</td>
                       <td>{list_item.quantity}</td>
                     </tr>
-                  ))
+                  )) : <p>There is no record.</p>
                 }
               </tbody>
             </table>
