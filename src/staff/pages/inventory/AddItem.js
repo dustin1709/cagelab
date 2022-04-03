@@ -75,7 +75,9 @@ const AddItem = () => {
                     <option value="0">Select item type</option>
                     {
                       itemTypes.map((itemType) => (
-                        <option value={itemType.typeID}>{itemType.model}</option>
+                        itemType.model !== "" ? 
+                        <option value={itemType.typeID}>{itemType.model}</option> 
+                        : <></>
                       ))
                     }
                   </select>

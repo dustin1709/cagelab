@@ -32,12 +32,12 @@ function App() {
       let res = await result.json();
       console.log(res.item_type);
       setItemTypes(res.item_type);
-      if (!localStorage.getItem('all-items', JSON.stringify(res.itemtypes))) {
-        localStorage.setItem('all-items', JSON.stringify(res.itemtypes));
+      if (!localStorage.getItem('all-items', JSON.stringify(res.item_type))) {
+        localStorage.setItem('all-items', JSON.stringify(res.item_type));
       }
-      if (localStorage.getItem('all-items', JSON.stringify(res.itemtypes))) {
+      if (localStorage.getItem('all-items', JSON.stringify(res.item_type))) {
         localStorage.removeItem('all-items');
-        localStorage.setItem('all-items', JSON.stringify(res.itemtypes));
+        localStorage.setItem('all-items', JSON.stringify(res.item_type));
       }
     }
     loadTypes();
@@ -79,7 +79,7 @@ function App() {
           <Route path="/staff/report" element={<StaffReport />} />
           <Route path="/staff/inventory/addItem" element={<AddItem />} />
           <Route path="/staff/inventory/addItemType" element={<AddItemType />} />
-          <Route path="/staff/inventory/viewitem" element={<ViewItem />} />
+          <Route path="/staff/inventory/viewitem/:id" element={<ViewItem />} />
         </Routes>
       </main>
     </div>

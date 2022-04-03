@@ -14,11 +14,9 @@ const ViewItem = () => {
   const [ borrower, setBorrower ] = useState('');
   const {id} = useParams();
   useEffect(() => {
+    console.log("item id is: "+id);
     if (localStorage.getItem("user")) {
         setMyUser(localStorage.getItem("user"));
-    }
-    if (!localStorage.getItem("typeID")) {
-      navigate('/staff/inventory');
     }
   }, [])
 
@@ -40,11 +38,13 @@ const ViewItem = () => {
 
   const add = async (e) => {
     e.preventDefault();
-    console.log("Item " + localStorage.getItem('typeID') + " added to cart.");
-    localStorage.setItem('item', JSON.stringify(items[0]));
-    localStorage.setItem('borrower', borrower);
-    localStorage.removeItem('typeID');
-    navigate('/staff/cart');
+    if (!localStorage.getItem('item')) {
+      localStorage.setItem('item', JSON.stringify(items[0]));
+      localStorage.setItem('borrower', borrower);
+      navigate('/staff/cart');
+    } else {
+      alert("Remove or Complete current reservation in cart first.");
+    }
   };
 
   return (
@@ -55,14 +55,17 @@ const ViewItem = () => {
           {items.map((item) => (<h3>{item.model}</h3>))}
           <h5>Quantity available: {amount}</h5>
           <div style={{width: "100%", clear: 'both'}}>
-            <label style={{padding: '1%'}}>Instance Lending</label>
+            <h6 style={{padding: '1%'}}>Instance Lending</h6>
             <form onSubmit={add} style={{
-              width: "30%", clear: 'both', padding: '1%', border: '1px solid black', textAlign: 'center'
+              width: "30%", clear: 'both', padding: '1%', border: '1px solid black', textAlign: 'left'
             }}>
+                <label>University ID:</label>
                 <input type="text" 
                             className="form-control" 
-                            placeholder="Enter Borrower's Username"
+                            placeholder="Enter Borrower's UID"
                             onChange={(e) => setBorrower(e.target.value)} />
+                <div style={{padding: '3%', clear: 'both'}}></div>
+                <h6>Item Info:</h6>
                 {
                   items.map((item) => (
                     <div>

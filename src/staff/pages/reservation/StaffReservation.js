@@ -5,72 +5,65 @@ import { useState, useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
 
 const StaffReservation = () => {
-
-  const [ borrower, setBorrower ] = useState('');
-  const [ itemName, setItemName ] = useState('');
-  const [ orderID, setOrderID ] = useState('');
-  const [ today, setToday ] = useState('');
-  const [ tomorrow, setTomorrow ] = useState('');
+  const url = "http://192.168.192.31:3000/borrower_item/none/";
+  const [history, setHistory] = useState([]);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
-    if (localStorage.getItem("borrower-checked")) {
-      setBorrower(localStorage.getItem("borrower-checked"));
+    const getReservationHistory = async () => {  
+      let result = await fetch(url+"reservations");
+      if(!result.ok) throw Error("Unable to get "+url+"reservations");
+      let res = await result.json();
+      setHistory(res.borrower_item);
     }
-    if (localStorage.getItem("item-checked")) {
-      setItemName(localStorage.getItem("item-checked"));
+    const loadTypes = async () => {
+      let result = await fetch("http://192.168.192.31:3000/item_types");
+      if(!result.ok) throw Error("Unable to get item types");
+      let res = await result.json();
+      console.log(res.item_type);
+      setItems(res.item_type);
     }
-    if (localStorage.getItem("orderID")) {
-      setOrderID(localStorage.getItem("orderID"));
-    }
+    loadTypes();
+    getReservationHistory();
   }, [])
-
-  useEffect(() => {
-    var today = new Date();
-    setToday(formatDate(today));
-    var tomorrow = new Date(new Date(today).getTime() + 60 * 60 * 24 * 1000);
-    setTomorrow(formatDate(tomorrow));
-  }, [])
-
-  function formatDate(date) {
-    var dd = String(date.getDate()).padStart(2, '0');
-    var mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = date.getFullYear();
-    date = mm + '/' + dd + '/' + yyyy;
-    return date;
-  }
 
   return (
     <>
       <StaffNavBar />
       <div className="mainContainerRight">
         <div style={{padding: '3%', backgroundColor: '#cfd0d1', margin: '2%'}}>
-          <h3>Borrower Check Out History</h3>
+          <h3>Borrower History</h3>
           <div style={{padding: '0.75%', clear: 'both'}}></div>
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Order ID</th>
-                <th scope="col">Username</th>
-                <th scope="col">Item Name</th>
+                <th scope="col">reservationID</th>
+                <th scope="col">universityID</th>
+                <th scope="col">reservationTime</th>
                 <th scope="col">Quantity</th>
-                <th scope="col">Check In Date</th>
-                <th scope="col">Return By Date</th>
-                <th scope="col">Pick Up (Yes/No)</th>
+                <th scope="col">Item</th>
+                <th scope="col">Check Out Time</th>
               </tr>
             </thead>
             <tbody>
               {
-                localStorage.getItem("item-checked") ?
+                (history.length > 0) ? history.map((History) => 
+                (<tr>
+                  <td>{History.reservationID}</td>
+                  <td>{History.universityID}</td>
+                  <td>{History.reservationTime}</td>
+                  <td>{History.quantity}</td>
+                  <td>{
+                    items.map((item) => (
+                        item.typeID === History.typeID ?
+                        item.model : ""
+                    ))
+                  }</td>
+                  <td>{History.checkout ? History.checkout : "[check out pending]"}</td>
+                </tr>)) :
                 <tr>
-                  <td>{orderID}</td>
-                  <td>{borrower}</td>
-                  <td>{itemName}</td>
-                  <td>1</td>
-                  <td>{today}</td>
-                  <td>{tomorrow}</td>
-                  <td>Yes</td>
-                </tr> :
-                <tr></tr>
+                  No record to display
+                </tr>
               }
             </tbody>
           </table>

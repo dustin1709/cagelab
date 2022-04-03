@@ -35,21 +35,20 @@ const Inventory = ({itemTypes, search, setSearch}) => {
       <div className="mainContainerRight">
         <div style={{padding: '3%', margin: '2%'}}>
           <h3>Inventory</h3>
-          <div style={{paddingTop: "1%", clear: 'both'}}>
-            <div style={{paddingTop: "2%", clear: 'both'}}></div>
-            <Link to="/staff/inventory/addItem">
+          <div style={{display: 'flex', flexDirection: 'row', paddingBottom: '1%', paddingTop: '0.5%'}}>
+            <Link to="/staff/inventory/addItem" style={{paddingRight: '0.5%'}}>
               <Button variant="primary" id="newItem">
                 Add New Item
               </Button>
             </Link>
-            <div style={{paddingTop: "0.5%", clear: 'both'}}></div>
-            <Link to="/staff/inventory/addItemType">
+            
+            <Link to="/staff/inventory/addItemType" style={{paddingLeft: '0.5%'}}>
               <Button variant="dark" id="newItemType">
                 Add New Item Type
               </Button>
             </Link>
           </div>
-          <div style={{width: "30%", clear: 'both'}}>
+          <div style={{paddingTop: "1.5%", width: "30%", clear: 'both'}}>
             <h3>Choose Model</h3>
             {/* <form onSubmit={next}>
               <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
@@ -79,8 +78,8 @@ const Inventory = ({itemTypes, search, setSearch}) => {
               itemTypes.map((itemType) => (
                 (itemType.model !== "") ? (
                 <>
-                  <Link className="btn btn-info" role="button" to={`/staff/viewitem/${itemType.typeID}`}>{itemType.model}</Link>
-                  <div style={{clear: 'both', padding: '1%'}}></div>
+                  <Link className="btn btn-light" role="button" to={`/staff/inventory/viewitem/${itemType.typeID}`}>{itemType.model}</Link>
+                  <div style={{clear: 'both', padding: '0.5%'}}></div>
                 </>) : <></>
               ))
             }

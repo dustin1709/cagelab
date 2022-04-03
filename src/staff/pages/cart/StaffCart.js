@@ -29,15 +29,52 @@ const StaffCart = () => {
     navigate('/staff/cart');
   };
 
+  function formatDate(date) {
+    var dd = String(date.getDate()).padStart(2, '0');
+    var mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = date.getFullYear();
+    function checkTime(i) {
+      return (i < 10) ? "0" + i : i;
+    }
+    date = yyyy + "-" + mm + "-" + dd + " " + checkTime(date.getHours()) + ":" + checkTime(date.getMinutes()) + ":" + checkTime(date.getSeconds());
+    return date;
+  }
+
   const checkout = async (e) => {
     e.preventDefault();
-    localStorage.setItem('orderID', (borrower + Math.floor(Math.random() * 101)));
-    localStorage.setItem('borrower-checked', borrower);
-    localStorage.setItem('item-checked', item.name);
-    localStorage.removeItem('borrower');
-    localStorage.removeItem('item');
-    navigate('/staff/reservation');
-  }
+    if (localStorage.getItem("item")) {
+      const instance = {universityID: borrower, reservationTime: formatDate(new Date())};
+      console.log(JSON.stringify(instance));
+      const postCmd = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(instance)
+      }
+      const response = await fetch("http://192.168.192.31:3000/borrower_item/reservation", postCmd);
+      if (!response.ok) throw Error('Something wrong... - borrower_item/reservation')
+      let res = await response.json();
+      
+      let reservationID = res.borrower_item.insertId;
+      const instance2 = {reservationID, typeID: item.typeID, quantity: 1};
+      console.log(JSON.stringify(instance2));
+      const postCmd2 = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(instance2)
+      }
+      const response2 = await fetch("http://192.168.192.31:3000/reservation_contents/addType", postCmd2);
+      if (!response2.ok) throw Error('Something wrong... - reservation_contents/addType')
+
+      // remove localstorage items
+      localStorage.removeItem("item");
+      localStorage.removeItem("borrower");
+      navigate('/staff/reservation');
+    }
+  } //checkout()
 
   return (
     <>
