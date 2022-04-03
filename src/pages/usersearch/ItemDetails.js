@@ -29,8 +29,25 @@ const ItemDetails = () => {
     loadTypes();
   }, [])
 
+  function formatDate(date) {
+    var dd = String(date.getDate()).padStart(2, '0');
+    var mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = date.getFullYear();
+    function checkTime(i) {
+      return (i < 10) ? "0" + i : i;
+    }
+    date = yyyy + "-" + mm + "-" + dd + " " + checkTime(date.getHours()) + ":" + checkTime(date.getMinutes()) + ":" + checkTime(date.getSeconds());
+    return date;
+  }
+
   const add = async (e) => {
     e.preventDefault();
+    if (quantity > 0) {
+      localStorage.setItem('selected-item', id);
+      localStorage.setItem('selected-item-name', items[id].model);
+      localStorage.setItem('amount', quantity);
+      localStorage.setItem('date', formatDate(new Date()));
+    }
     navigate('/cart');
   };
 

@@ -5,32 +5,71 @@ import { Link, useNavigate } from "react-router-dom";
 import * as FaIcons from 'react-icons/fa';
 
 const Checkout = () => {
+  const API_URL = "http://192.168.192.31:3000/";
+
   const [borrower, setBorrower] = useState('');
-  const [item, setItem] = useState('');
+  const [name, setName] = useState('');
+  const [date, setDate] = useState('');
+  const [id, setId] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
   useEffect(() => {
-    if (localStorage.getItem("user")) {
-      setBorrower(localStorage.getItem("user"));
+    if (localStorage.getItem("user-id")) {
+      setBorrower(localStorage.getItem("user-id"));
     }
-    if (localStorage.getItem("user-item")) {
-      setItem(JSON.parse(localStorage.getItem("user-item")));
+    if (localStorage.getItem("selected-item")) {
+      setName(localStorage.getItem("selected-item-name"));
+      setId(localStorage.getItem("selected-item"));
+      setDate(localStorage.getItem("selected-item"));
+      setQuantity(localStorage.getItem("amount"));
     }
   }, [])
 
   const remove = async (e) => {
     e.preventDefault();
-    localStorage.removeItem('user-item');
+    localStorage.removeItem("selected-item");
+    localStorage.removeItem("selected-item-name");
+    localStorage.removeItem('amount');
+    localStorage.removeItem('date');
     navigate('/cart');
   };
 
   const checkout = async (e) => {
     e.preventDefault();
-    if (localStorage.getItem("user-item")) {
-      localStorage.setItem('user-orderID', (borrower + Math.floor(Math.random() * 101)));
-      localStorage.setItem('user-item-checked', item.name);
-      localStorage.removeItem('user-item');
+    if (localStorage.getItem("selected-item")) {
+      const instance = {UniversityID: borrower, reservationTime: date};
+      console.log(JSON.stringify(instance));
+      const postCmd = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(instance)
+      }
+      const response = await fetch(API_URL+"borrower_item/reservation", postCmd);
+      if (!response.ok) throw Error('Something wrong... - borrower_item/reservation')
+      let res = await response.json();
+      
+      let reservationID = res.borrower_item.insertId;
+      const instance2 = {reservationID, typeID: id, quantity};
+      console.log(JSON.stringify(instance2));
+      const postCmd2 = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(instance2)
+      }
+      const response2 = await fetch(API_URL+"reservation_contents/addType", postCmd2);
+      if (!response2.ok) throw Error('Something wrong... - reservation_contents/addType')
+
+      // remove localstorage items
+      localStorage.removeItem("selected-item");
+      localStorage.removeItem("selected-item-name");
+      localStorage.removeItem('amount');
+      localStorage.removeItem('date');
+      navigate('/reservation');
     }
-    navigate('/reservation');
   }
   return (
     <>
@@ -52,7 +91,7 @@ const Checkout = () => {
                 {
                   localStorage.getItem('user-item') ? 
                   <tr>
-                    <td>{item.name}</td>
+                    <td>{name}</td>
                     <td>1</td>
                     <td><button type="button" className="btn btn-danger" onClick={remove}><FaIcons.FaTrashAlt /></button></td>
                   </tr> : 
