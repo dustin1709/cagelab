@@ -80,7 +80,12 @@ const Kit = () => {
                     <td>
                       {" "}
                       <Link to="">
-                        <Button variant="secondary">View Details</Button>{" "}
+                        <Button
+                          variant="secondary"
+                          to={`/kit/viewkit/${item.kitID}`}
+                        >
+                          View Details
+                        </Button>
                       </Link>
                     </td>
                   </tr>

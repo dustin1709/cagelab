@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import Login from "./pages/login/login";
 import Home from "./pages/userindex/Home";
 import Reservation from "./pages/reservation/Reservation";
 import Checkout from "./pages/shoppingcart/Checkout";
 import Kit from "./pages/kit/Kit";
 import CreateKit from "./pages/kit/CreateKit";
+import ViewKit from "./pages/kit/ViewKit";
 import SearchResults from "./pages/usersearch/SearchResults";
 import StaffLogin from "./staff/pages/login/StaffLogin";
 import StaffDashboard from "./staff/pages/dashboard/StaffDashboard";
@@ -24,32 +25,33 @@ import StaffCheckOut from "./staff/pages/checkout/StaffCheckOut";
 
 function App() {
   const API_URL = "http://192.168.192.31:3000/item_types";
-  const [ itemTypes, setItemTypes ] = useState([]);
+  const [itemTypes, setItemTypes] = useState([]);
   useEffect(() => {
     const loadTypes = async () => {
       let result = await fetch(API_URL);
-      if(!result.ok) throw Error("Unable to get item types");
+      if (!result.ok) throw Error("Unable to get item types");
       let res = await result.json();
       console.log(res.item_type);
       setItemTypes(res.item_type);
-      if (!localStorage.getItem('all-items', JSON.stringify(res.item_type))) {
-        localStorage.setItem('all-items', JSON.stringify(res.item_type));
+      if (!localStorage.getItem("all-items", JSON.stringify(res.item_type))) {
+        localStorage.setItem("all-items", JSON.stringify(res.item_type));
       }
-      if (localStorage.getItem('all-items', JSON.stringify(res.item_type))) {
-        localStorage.removeItem('all-items');
-        localStorage.setItem('all-items', JSON.stringify(res.item_type));
+      if (localStorage.getItem("all-items", JSON.stringify(res.item_type))) {
+        localStorage.removeItem("all-items");
+        localStorage.setItem("all-items", JSON.stringify(res.item_type));
       }
-    }
+    };
     loadTypes();
-  }, [])
-  const [search, setSearch] = useState('');
+  }, []);
+  const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   useEffect(() => {
     const filteredResults = itemTypes.filter((itemType) =>
-      ((itemType.model).toLowerCase()).includes(search.toLowerCase()));
+      itemType.model.toLowerCase().includes(search.toLowerCase())
+    );
 
     setSearchResults(filteredResults.reverse());
-  }, [itemTypes, search])
+  }, [itemTypes, search]);
 
   return (
     <div className="App">
@@ -57,13 +59,22 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Home />} />
-          <Route path="/search" element={<SearchResults itemTypes={searchResults}
-          search={search} setSearch={setSearch} />} />
+          <Route
+            path="/search"
+            element={
+              <SearchResults
+                itemTypes={searchResults}
+                search={search}
+                setSearch={setSearch}
+              />
+            }
+          />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/cart" element={<Checkout />} />
           <Route path="/kit" element={<Kit />} />
           <Route path="/createkit" element={<CreateKit />} />
-          <Route path="/search/viewitem/:id" element={<ItemDetails/>} />
+          <Route path="/kit/viewkit/:id" element={<ViewKit />} />
+          <Route path="/search/viewitem/:id" element={<ItemDetails />} />
 
           {/* Staff section */}
           <Route path="/staff" element={<StaffLogin />} />
@@ -73,12 +84,23 @@ function App() {
           <Route path="/staff/cart" element={<StaffCart />} />
           <Route path="/staff/reservation" element={<StaffReservation />} />
           <Route path="/staff/kit" element={<StaffKit />} />
-          <Route path="/staff/inventory" element={<Inventory itemTypes={searchResults}
-          search={search} setSearch={setSearch} />} />
+          <Route
+            path="/staff/inventory"
+            element={
+              <Inventory
+                itemTypes={searchResults}
+                search={search}
+                setSearch={setSearch}
+              />
+            }
+          />
           <Route path="/staff/checkin/searchbyid" element={<SearchByID />} />
           <Route path="/staff/report" element={<StaffReport />} />
           <Route path="/staff/inventory/addItem" element={<AddItem />} />
-          <Route path="/staff/inventory/addItemType" element={<AddItemType />} />
+          <Route
+            path="/staff/inventory/addItemType"
+            element={<AddItemType />}
+          />
           <Route path="/staff/inventory/viewitem/:id" element={<ViewItem />} />
         </Routes>
       </main>
