@@ -17,6 +17,7 @@ const ViewKit = () => {
   const [qty, setQty] = useState("");
   const [typeID, setTypeID] = useState(0);
   const navigate = useNavigate();
+  const [refreshKey, setRefreshKey] = useState([]);
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -38,7 +39,7 @@ const ViewKit = () => {
       setList(res.itemKitContent);
     };
     loadKitTypes();
-  }, []);
+  }, [refreshKey]);
 
   useEffect(() => {
     const loadTypes = async () => {
@@ -76,7 +77,7 @@ const ViewKit = () => {
       console.log("New item posted.");
       alert("New item posted successfully.");
     }
-    navigate("/kit/viewkit/" + id);
+    setRefreshKey();
   };
 
   const ref = React.createRef();
