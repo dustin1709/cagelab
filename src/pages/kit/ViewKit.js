@@ -75,7 +75,7 @@ const ViewKit = () => {
       console.log("New item posted.");
       alert("New item posted successfully.");
     }
-    navigate("/kit/viewkit/" + id);
+    window.location.reload();
   };
 
   const ref = React.createRef();
