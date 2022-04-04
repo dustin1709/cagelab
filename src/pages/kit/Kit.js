@@ -79,13 +79,12 @@ const Kit = () => {
                     <td>{item.qty}</td>
                     <td>
                       {" "}
-                      <Link to="">
-                        <Button
-                          variant="secondary"
-                          to={`/kit/viewkit/${item.kitID}`}
-                        >
-                          View Details
-                        </Button>
+                      <Link
+                        className="btn btn-light"
+                        role="button"
+                        to={`/kit/viewkit/${item.kitID}`}
+                      >
+                        View Details
                       </Link>
                     </td>
                   </tr>
@@ -96,8 +95,15 @@ const Kit = () => {
                   <td>2022-01-10T14:25:00</td>
                   <td>
                     {" "}
-                    <Link to="">
+                    {/* <Link to="">
                       <Button variant="secondary">View Details</Button>{" "}
+                    </Link> */}
+                    <Link
+                      className="btn btn-light"
+                      role="button"
+                      to={`/kit/viewkit/1`}
+                    >
+                      View Details
                     </Link>
                   </td>
                 </tr>
