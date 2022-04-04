@@ -3,7 +3,7 @@ import NavBar from "../navbar/NavBar";
 import { Form, Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const ViewKit = () => {
@@ -16,6 +16,7 @@ const ViewKit = () => {
   const [itemTypes, setItemTypes] = useState([]);
   const [qty, setQty] = useState("");
   const [typeID, setTypeID] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -75,7 +76,7 @@ const ViewKit = () => {
       console.log("New item posted.");
       alert("New item posted successfully.");
     }
-    window.location.reload();
+    navigate("/kit/viewkit/" + id);
   };
 
   const ref = React.createRef();
