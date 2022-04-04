@@ -62,8 +62,10 @@ const Kit = () => {
           <Table responsive="sm">
             <thead>
               <tr>
-                <th scope="col">kitID</th>
-                <th scope="col">name</th>
+                <th scope="col">Kit ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Course ID</th>
+                <th scope="col">Quantity</th>
                 <th scope="col">details</th>
               </tr>
             </thead>
@@ -73,6 +75,8 @@ const Kit = () => {
                   <tr>
                     <td>{item.kitID}</td>
                     <td>{item.name}</td>
+                    <td>{item.courseID}</td>
+                    <td>{item.qty}</td>
                     <td>
                       {" "}
                       <Link to="">
