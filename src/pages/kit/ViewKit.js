@@ -24,8 +24,8 @@ const ViewKit = () => {
   }, []);
 
   useEffect(() => {
-    const loadTypes = async () => {
-      let result = await fetch(API_URL + id);
+    const loadKitTypes = async () => {
+      let result = await fetch(API_URL + "/itemKitContent/kit/type/" + id);
 
       console.log("Fetching " + API_URL + "/itemKitContent/kit/type/" + id);
       if (!result.ok) throw Error("Unable to get the kit_type list");
@@ -35,6 +35,17 @@ const ViewKit = () => {
       let res = await result.json();
       console.log(res.itemKitContent);
       setList(res.itemKitContent);
+    };
+    loadKitTypes();
+  }, []);
+
+  useEffect(() => {
+    const loadTypes = async () => {
+      let result = await fetch(API_URL + "/item_types");
+      if (!result.ok) throw Error("Unable to get item types");
+      let res = await result.json();
+      console.log(res.item_type);
+      setItemTypes(res.item_type);
     };
     loadTypes();
   }, []);
