@@ -47,23 +47,34 @@ const ViewKit = () => {
           <h3>Kit</h3>
         </div>
 
+        <div class="kitSelection">
+          <Link to="/createKitItem">
+            <Button variant="primary" id="newItem">
+              Add Item
+            </Button>
+          </Link>
+        </div>
+
         <div class="kitTable" ref={ref}>
           <Table responsive="sm">
             <thead>
               <tr>
-                <th scope="col">type id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
               </tr>
             </thead>
             <tbody>
               {boo ? (
                 list.map((item) => (
                   <tr>
-                    <td>{item.typeID}</td>
+                    <td>{item.name}</td>
+                    <td>{item.qty}</td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td>500000</td>
+                  <td>test item</td>
+                  <td>111</td>
                 </tr>
               )}
             </tbody>
