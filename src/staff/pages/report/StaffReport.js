@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
+import * as FaIcons from 'react-icons/fa';
 import ReactToPdf from "react-to-pdf";
 
 const StaffReport = () => {
@@ -45,7 +46,7 @@ const StaffReport = () => {
           <div>
               <ReactToPdf targetRef={ref} filename="report.pdf">
                   {({toPdf}) => (
-                      <button onClick={toPdf}>Generate pdf</button>
+                      <button className="btn btn-success" onClick={toPdf}> <FaIcons.FaDownload /> Download PDF</button>
                   )}
               </ReactToPdf>
               <div style={{ padding: "10px", clear: "both" }}></div>
