@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
@@ -33,7 +33,7 @@ const StaffCheckOut = () => {
     e.preventDefault();
     const instance = {reservationID: resID, itemID: itemID};
     console.log(JSON.stringify(instance));
-    const patchCmdpostCmd = {
+    const postCmd = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -52,6 +52,7 @@ const StaffCheckOut = () => {
     }
     const response2 = await fetch(API_URL+"borrower_item/pickup", patchCmd);
     if (response.ok && response2.ok) {
+      alert("Reservation " + resID + " with itemID " + itemID + " checked out complete.");
       navigate("/staff/reservation");
     }
   }
