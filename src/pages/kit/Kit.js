@@ -43,14 +43,14 @@ const Kit = () => {
           <h3>Kit</h3>
         </div>
         <div class="kitSelection">
-          <Form.Select
+          {/* <Form.Select
             aria-label="Default select example"
             style={{ width: "70%", float: "left" }}
           >
             <option value="1">Current Kit</option>
             <option value="2">Past Kit</option>
             <option value="3">Pending Kit</option>
-          </Form.Select>
+          </Form.Select> */}
           <Link to="/createkit">
             <Button variant="primary" id="newKit">
               New Kit
@@ -66,7 +66,7 @@ const Kit = () => {
                 <th scope="col">Name</th>
                 <th scope="col">Course ID</th>
                 <th scope="col">Quantity</th>
-                <th scope="col">details</th>
+                <th scope="col">Details</th>
               </tr>
             </thead>
             <tbody>
