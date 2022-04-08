@@ -95,7 +95,7 @@ const Inventory = ({ itemTypes, search, setSearch }) => {
                   role="button"
                   to={`/staff/inventory/viewitem/${itemType.typeID}`}
                 >
-                  {itemType.model}
+                  {itemType.name}
                 </Link>
                 <div style={{ clear: "both", padding: "0.5%" }}></div>
               </>
