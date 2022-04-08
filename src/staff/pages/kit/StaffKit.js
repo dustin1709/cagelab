@@ -1,54 +1,118 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import StaffNavBar from "../../components/StaffNavBar";
 
 const StaffKit = () => {
+  const API_URL = "http://192.168.192.31:3000/kit_types";
 
-  const [ myUser, setMyUser ] = useState('');
+  const [myUser, setMyUser] = useState("");
+  const [list, setList] = useState([]);
+  const [boo, setBoo] = useState(false);
+
   useEffect(() => {
     if (localStorage.getItem("user")) {
-        setMyUser(localStorage.getItem("user"));
+      setMyUser(localStorage.getItem("user"));
     }
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    const loadTypes = async () => {
+      let result = await fetch(API_URL);
+      if (!result.ok) throw Error("Unable to get the kit_type list");
+      if (result.ok) {
+        setBoo(true);
+      }
+      let res = await result.json();
+      console.log(res.kit_type);
+      setList(res.kit_type);
+    };
+    loadTypes();
+  }, []);
+
+  const ref = React.createRef();
 
   return (
     <>
       <StaffNavBar />
       <div className="mainContainerRight">
-        <div style={{padding: '3%', backgroundColor: '#cfd0d1', margin: '2%'}}>
-          <h3>Reservation</h3>
-          <div style={{padding: '0.75%', clear: 'both'}}></div>
-          <div style={{width: "30%", clear: 'both'}}>
-            <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-              <option value="kit-current">Current Kit</option>
-              <option value="kit-past">Past Kit</option>
-              <option value="kit-past">Pending Kit</option>
-            </select>
-          </div>
-          <table class="table">
+        <div className="pageTitle">
+          <h3>Kit</h3>
+        </div>
+        <div class="kitSelection">
+          {/* <Form.Select
+            aria-label="Default select example"
+            style={{ width: "70%", float: "left" }}
+          >
+            <option value="1">Current Kit</option>
+            <option value="2">Past Kit</option>
+            <option value="3">Pending Kit</option>
+          </Form.Select> */}
+          <Link to="/staff/kit/staffcreatekit">
+            <Button variant="primary" id="newKit">
+              New Kit
+            </Button>
+          </Link>
+        </div>
+
+        <div class="kitTable" ref={ref}>
+          <Table responsive="sm">
             <thead>
               <tr>
-                <th scope="col">Order ID</th>
-                <th scope="col">Course</th>
-                <th scope="col">Kit Name</th>
+                <th scope="col">Kit ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Course ID</th>
+                <th scope="col">Quantity</th>
                 <th scope="col">Details</th>
               </tr>
             </thead>
             <tbody>
+              {boo ? (
+                list.map((item) => (
+                  <tr>
+                    <td>{item.kitID}</td>
+                    <td>{item.name}</td>
+                    <td>{item.courseID}</td>
+                    <td>{item.qty}</td>
+                    <td>
+                      {" "}
+                      <Link
+                        className="btn btn-light"
+                        role="button"
+                        to={`/staff/kit/staffviewkit/${item.kitID}`}
+                      >
+                        View Details
+                      </Link>
+                    </td>
+                  </tr>
+                ))
+              ) : (
                 <tr>
-                  <td>01</td>
-                  <td>ISTE 500</td>
-                  <td>Kit</td>
-                  <td><button type="button" className="btn btn-light">View</button></td>
+                  <td>2</td>
+                  <td>2022-01-10T14:25:00</td>
+                  <td>
+                    {" "}
+                    {/* <Link to="">
+                      <Button variant="secondary">View Details</Button>{" "}
+                    </Link> */}
+                    <Link
+                      className="btn btn-light"
+                      role="button"
+                      to={`/staff/kit/staffviewkit/1`}
+                    >
+                      View Details
+                    </Link>
+                  </td>
                 </tr>
+              )}
             </tbody>
-          </table>
+          </Table>
         </div>
       </div>
     </>
   );
 };
-
 export default StaffKit;

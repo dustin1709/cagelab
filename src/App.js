@@ -14,6 +14,8 @@ import StaffCheckIn from "./staff/pages/checkin/StaffCheckIn";
 import StaffCart from "./staff/pages/cart/StaffCart";
 import StaffReservation from "./staff/pages/reservation/StaffReservation";
 import StaffKit from "./staff/pages/kit/StaffKit";
+import StaffCreateKit from "./staff/pages/kit/StaffCreateKit";
+import StaffViewKit from "./staff/pages/kit/StaffViewKit";
 import Inventory from "./staff/pages/inventory/Inventory";
 import SearchByID from "./staff/pages/search/SearchByID";
 import StaffReport from "./staff/pages/report/StaffReport";
@@ -84,6 +86,15 @@ function App() {
           <Route path="/staff/cart" element={<StaffCart />} />
           <Route path="/staff/reservation" element={<StaffReservation />} />
           <Route path="/staff/kit" element={<StaffKit />} />
+          <Route
+            path="/staff/kit/staffcreatekit"
+            element={<StaffCreateKit />}
+          />
+          <Route
+            path="/staff/kit/staffviewkit/:id"
+            element={<StaffViewKit />}
+          />
+
           <Route
             path="/staff/inventory"
             element={

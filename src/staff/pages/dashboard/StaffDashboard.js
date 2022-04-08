@@ -51,6 +51,11 @@ const StaffDashboard = () => {
               Kit Requests
             </Link>
           </div>
+          <div className="DButton">
+            <Link to="/staff/report" className="nav-link text-black">
+              Reports
+            </Link>
+          </div>
         </div>
 
         <div className="page-row">
@@ -59,11 +64,7 @@ const StaffDashboard = () => {
               Inventory
             </Link>
           </div>
-          <div className="DButton">
-            <Link to="/staff/report" className="nav-link text-black">
-              Reports
-            </Link>
-          </div>
+
           {/* <div className="DButton">
             <Link to="/staff/settings" className="nav-link text-black">
               Settings
