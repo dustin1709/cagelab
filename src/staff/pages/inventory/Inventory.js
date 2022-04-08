@@ -81,7 +81,7 @@ const Inventory = ({ itemTypes, search, setSearch }) => {
               className="form-control"
               id="form1"
               type="text"
-              placeholder="Search items"
+              placeholder="Search models"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />

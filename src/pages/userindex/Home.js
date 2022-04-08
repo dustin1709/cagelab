@@ -52,13 +52,13 @@ const Home = () => {
           <p>
             You are currently on the RIT CageLab website. Students can reserve
             items to borrow for their courses while professors can borrow items
-            and create a kit for the courses that they teach.
+            and create kits for the courses that they teach.
           </p>
           <div style={{ padding: "1%", clear: "both" }}></div>
         </div>
 
         <div className="HomeLeft">
-          <h5 style={{ textAlign: "center" }}>Pick up Pending</h5>
+          <h5 style={{ textAlign: "center" }}>Pickup Pending</h5>
           <div class="viewDetailsButton">
             {list.map((list_item) => (
               <ul style={{ textAlign: "left" }}>

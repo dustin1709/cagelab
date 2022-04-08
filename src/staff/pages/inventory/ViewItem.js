@@ -73,17 +73,22 @@ const ViewItem = () => {
             Back to Inventory
           </Link>
 
+          <h3>Item Info:</h3>
+          {items.map((item) => (
+            <h3>{item.name}</h3>
+          ))}
+
           {items.map((item) => (
             <div>
               <h5>Name: {item.name}</h5>
               <h5>Model: {item.model}</h5>
-              <h5>Cost: {item.cost}</h5>
+              <h5>Price: {item.cost}</h5>
             </div>
           ))}
 
           <br></br>
           <div style={{ width: "100%", clear: "both" }}>
-            <h3 style={{ padding: "1%" }}>Instance Lending</h3>
+            <h3 style={{ padding: "1%" }}>Borrowing Information</h3>
             <form
               onSubmit={add}
               style={{
@@ -101,10 +106,7 @@ const ViewItem = () => {
                 onChange={(e) => setBorrower(e.target.value)}
               />
               <div style={{ padding: "3%", clear: "both" }}></div>
-              <h3>Item Info:</h3>
-              {items.map((item) => (
-                <h3>{item.model}</h3>
-              ))}
+
               <h5>Quantity: {amount}</h5>
               <h5>Checked Out Items: {check}</h5>
               <h5>Reserved Items: {reserve}</h5>

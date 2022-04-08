@@ -74,7 +74,7 @@ const StaffCheckOut = () => {
           resID +
           " with Item ID " +
           itemID +
-          " checked out complete."
+          " check out completed."
       );
       navigate("/staff/reservation");
     }
