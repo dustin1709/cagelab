@@ -66,7 +66,9 @@ const Reservation = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    const url = API_URL + status + "/" + localStorage.getItem("user-id");
+    // const url = API_URL + status + "/" + localStorage.getItem("user-id");
+    const url =
+      API_URL + "unpickedupReservation/" + localStorage.getItem("user-id");
     console.log("GET: " + url);
     let result = await fetch(url);
     if (!result.ok) {
@@ -90,7 +92,7 @@ const Reservation = () => {
         >
           <h3>My Reservations</h3>
           <div style={{ padding: "0.5%", clear: "both" }}></div>
-          <form onSubmit={submit}>
+          {/* <form onSubmit={submit}>
             <div style={{ width: "80%", float: "left" }}>
               <select
                 className="form-select form-select-lg mb-3"
@@ -111,7 +113,7 @@ const Reservation = () => {
             >
               Apply filter
             </button>
-          </form>
+          </form> */}
           <div style={{ padding: "0.25%", clear: "both" }}></div>
           <table class="table">
             <thead>
