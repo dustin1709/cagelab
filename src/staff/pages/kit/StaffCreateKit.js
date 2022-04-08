@@ -6,8 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 const StaffCreateKit = () => {
-  // const [date, setDate] = useState(new Date());
   const [name, setName] = useState("");
+  const [courseID, setCourseID] = useState("");
+  const [qty, setQty] = useState("");
 
   const navigate = useNavigate();
 
@@ -45,15 +46,6 @@ const StaffCreateKit = () => {
         <div class="newKitInfo">
           <div>
             <Form>
-              {/* <Form.Group as={Row} className="mb-3" controlId="courseName">
-                <Form.Label column sm="2">
-                  Course Number
-                </Form.Label>
-                <Col sm="10">
-                  <Form.Control as="input" />
-                </Col>
-              </Form.Group> */}
-
               <Form.Group as={Row} className="mb-3" controlId="kitName">
                 <Form.Label column sm="2">
                   Name
@@ -65,53 +57,35 @@ const StaffCreateKit = () => {
                   />
                 </Col>
               </Form.Group>
-              {/* 
-              <Form.Group as={Row} className="mb-3" controlId="kitName">
+
+              <Form.Group as={Row} className="mb-3" controlId="Courseid">
                 <Form.Label column sm="2">
-                  Kit Name
-                </Form.Label>
-                <Col sm="10">
-                  <Form.Control as="input" />
-                </Col>
-              </Form.Group> */}
-              {/* 
-              <Form.Group as={Row} className="mb-3" controlId="requestDate">
-                <Form.Label column sm="2">
-                  Request Date
+                  Course ID
                 </Form.Label>
                 <Col sm="10">
                   <Form.Control
-                    type="date"
-                    name="duedate"
-                    placeholder="Due date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
+                    as="input"
+                    onChange={(e) => setCourseID(e.target.value)}
                   />
                 </Col>
-              </Form.Group> */}
+              </Form.Group>
 
-              {/* <Form.Group as={Row} className="mb-3" controlId="itemsNeeded">
+              <Form.Group as={Row} className="mb-3" controlId="quan">
                 <Form.Label column sm="2">
-                  Items Needed
+                  Quantity
                 </Form.Label>
                 <Col sm="10">
-                  <Form.Control as="textarea" />
+                  <Form.Control
+                    as="input"
+                    onChange={(e) => setQty(e.target.value)}
+                  />
                 </Col>
-              </Form.Group> */}
-              {/* 
-              <Form.Group as={Row} className="mb-3" controlId="specialNote">
-                <Form.Label column sm="2">
-                  Speacial Note
-                </Form.Label>
-                <Col sm="10">
-                  <Form.Control as="textarea" />
-                </Col>
-              </Form.Group> */}
+              </Form.Group>
             </Form>
           </div>
 
           <div class="cancelKit">
-            <Link to={"/kit"}>
+            <Link to={"/staff/kit"}>
               <Button variant="secondary">Cancel</Button>{" "}
             </Link>
           </div>
