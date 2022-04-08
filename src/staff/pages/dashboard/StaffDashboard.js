@@ -62,17 +62,11 @@ const StaffDashboard = () => {
         </div>
 
         <div className="page-row">
-          <div className="DButton">
+          <div className="DButton" id="lastButton">
             <Link to="/staff/inventory" className="nav-link text-black">
               Inventory
             </Link>
           </div>
-
-          {/* <div className="DButton">
-            <Link to="/staff/settings" className="nav-link text-black">
-              Settings
-            </Link>
-          </div> */}
         </div>
       </div>
     </>
