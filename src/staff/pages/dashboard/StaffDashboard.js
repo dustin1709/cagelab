@@ -29,7 +29,10 @@ const StaffDashboard = () => {
             </Link>
           </div>
           <div className="DButton">
-            <Link to="/staff/checkin" className="nav-link text-black">
+            <Link
+              to="/staff/checkin/searchbyid"
+              className="nav-link text-black"
+            >
               Check In
             </Link>
           </div>
