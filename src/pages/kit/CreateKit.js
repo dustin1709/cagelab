@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 const CreateKit = () => {
   const [name, setName] = useState("");
   const [courseID, setCourseID] = useState("");
-  const [quantity, setQty] = useState("");
+  const [qty, setQty] = useState("");
 
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const CreateKit = () => {
     var raw = JSON.stringify({
       name: name,
       courseID: courseID,
-      qty: quantity,
+      qty: qty,
     });
     var requestOptions = {
       method: "POST",
