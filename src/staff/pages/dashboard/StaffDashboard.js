@@ -23,50 +23,50 @@ const StaffDashboard = () => {
               Search Item
             </Link>
           </div> */}
-          <div className="DButton">
+          <Button className="DButton" variant="secondary">
             <Link to="/staff/checkout" className="nav-link text-black">
               Check Out
             </Link>
-          </div>
-          <div className="DButton">
+          </Button>
+          <Button className="DButton" variant="secondary">
             <Link
               to="/staff/checkin/searchbyid"
               className="nav-link text-black"
             >
               Check In
             </Link>
-          </div>
-          <div className="DButton">
+          </Button>
+          <Button className="DButton" variant="secondary">
             <Link to="/staff/cart" className="nav-link text-black">
               Shopping Cart
             </Link>
-          </div>
+          </Button>
         </div>
 
         <div className="page-row">
-          <div className="DButton">
+          <Button className="DButton" variant="secondary">
             <Link to="/staff/reservation" className="nav-link text-black">
               Reservations
             </Link>
-          </div>
-          <div className="DButton">
+          </Button>
+          <Button className="DButton" variant="secondary">
             <Link to="/staff/kit" className="nav-link text-black">
               Kit Requests
             </Link>
-          </div>
-          <div className="DButton">
+          </Button>
+          <Button className="DButton" variant="secondary">
             <Link to="/staff/report" className="nav-link text-black">
               Reports
             </Link>
-          </div>
+          </Button>
         </div>
 
         <div className="page-row">
-          <div className="DButton" id="lastButton">
+          <Button className="DButton" id="lastButton" variant="secondary">
             <Link to="/staff/inventory" className="nav-link text-black">
               Inventory
             </Link>
-          </div>
+          </Button>
         </div>
       </div>
     </>
