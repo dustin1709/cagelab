@@ -95,7 +95,7 @@ const ViewKit = () => {
             <Form>
               <Form.Group as={Row} className="mb-3" controlId="kitName">
                 <Form.Label column sm="2">
-                  Item Type
+                  Model
                 </Form.Label>
                 <Col sm="10">
                   <select
@@ -103,7 +103,7 @@ const ViewKit = () => {
                     aria-label=".form-select-lg example"
                     onChange={(e) => setTypeID(e.target.value)}
                   >
-                    <option value="0">Select item type</option>
+                    <option value="0">Select model</option>
                     {itemTypes.map((itemType) =>
                       itemType.model !== "" ? (
                         <option value={itemType.typeID}>
@@ -158,8 +158,10 @@ const ViewKit = () => {
                 ))
               ) : (
                 <tr>
-                  <td>test item</td>
-                  <td>111</td>
+                  {/* <td>test item</td>
+                  <td>111</td> */}
+                  <td></td>
+                  <td></td>
                 </tr>
               )}
             </tbody>

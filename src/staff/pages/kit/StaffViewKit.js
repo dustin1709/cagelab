@@ -158,8 +158,10 @@ const ViewKit = () => {
                 ))
               ) : (
                 <tr>
-                  <td>test item</td>
-                  <td>111</td>
+                  {/* <td>test item</td>
+                  <td>111</td> */}
+                  <td></td>
+                  <td></td>
                 </tr>
               )}
             </tbody>
