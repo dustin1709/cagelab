@@ -1,8 +1,18 @@
 .DButton {
-  padding: 5%;
   margin: 1%;
   width: 32%;
   text-align: center;
+  background-color: lightgray;
+}
+
+button {
+  background-color: lightgray;
+  border: none;
+  padding: 10% 0;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: xx-large;
 }
 
 #lastButton {
@@ -12,8 +22,7 @@
 .page-row {
   display: flex;
   flex-direction: row;
-  margin: 1%;
-  height: 25%;
+  margin: auto;
 }
 
 .dashboard-comp {

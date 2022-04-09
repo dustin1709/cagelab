@@ -23,50 +23,51 @@ const StaffDashboard = () => {
               Search Item
             </Link>
           </div> */}
-          <Button className="DButton" variant="secondary">
-            <Link to="/staff/checkout" className="nav-link text-black">
-              Check Out
-            </Link>
-          </Button>
-          <Button className="DButton" variant="secondary">
-            <Link
-              to="/staff/checkin/searchbyid"
-              className="nav-link text-black"
-            >
-              Check In
-            </Link>
-          </Button>
-          <Button className="DButton" variant="secondary">
-            <Link to="/staff/cart" className="nav-link text-black">
-              Shopping Cart
-            </Link>
-          </Button>
+
+          <Link to="/staff/checkout" className="nav-link text-black DButton">
+            <button type="button">Check Out</button>
+          </Link>
+
+          <Link
+            to="/staff/checkin/searchbyid"
+            className="nav-link text-black DButton"
+          >
+            <button type="button">Check In</button>
+          </Link>
+
+          <Link to="/staff/cart" className="nav-link text-black DButton">
+            <button type="button">Shopping Cart</button>
+          </Link>
         </div>
 
         <div className="page-row">
-          <Button className="DButton" variant="secondary">
-            <Link to="/staff/reservation" className="nav-link text-black">
-              Reservations
-            </Link>
-          </Button>
-          <Button className="DButton" variant="secondary">
-            <Link to="/staff/kit" className="nav-link text-black">
-              Kit Requests
-            </Link>
-          </Button>
-          <Button className="DButton" variant="secondary">
-            <Link to="/staff/report" className="nav-link text-black">
-              Reports
-            </Link>
-          </Button>
+          <Link to="/staff/reservation" className="nav-link text-black DButton">
+            <button type="button">Reservation</button>
+          </Link>
+
+          <Link to="/staff/kit" className="nav-link text-black DButton">
+            <button type="button">Kit Requests</button>
+          </Link>
+
+          <Link to="/staff/report" className="nav-link text-black DButton">
+            <button type="button">Report</button>
+          </Link>
         </div>
 
         <div className="page-row">
-          <Button className="DButton" id="lastButton" variant="secondary">
+          {/* <Button className="DButton" id="lastButton" variant="secondary">
             <Link to="/staff/inventory" className="nav-link text-black">
               Inventory
             </Link>
-          </Button>
+          </Button> */}
+
+          <Link
+            to="/staff/inventory"
+            className="nav-link text-black DButton"
+            id="lastButton"
+          >
+            <button type="button">Inventory</button>
+          </Link>
         </div>
       </div>
     </>
