@@ -70,11 +70,10 @@ const SearchByID = () => {
       );
       if (response.ok) {
         alert("Reservation matched. Item: " + itemID + " checked in");
-        navigate("/staff/checkin/searchbyid");
+        navigate("/staff/checkin/");
       }
       if (!response.ok) {
-        alert("Reservation matched. Item: " + itemID + " checked in");
-        navigate("/staff/checkin/searchbyid");
+        alert("Reservation not matched. Please try a different itemID");
       }
     }
   };
