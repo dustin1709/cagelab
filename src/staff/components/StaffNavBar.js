@@ -40,7 +40,7 @@ const StaffNavBar = () => {
         </li>
         <li>
           <NavLink
-            to="/staff/checkin/searchbyid"
+            to="/staff/checkin/"
             activeclassname="active"
             className="nav-link text-white"
           >

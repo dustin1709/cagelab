@@ -72,6 +72,10 @@ const SearchByID = () => {
         alert("Reservation matched. Item: " + itemID + " checked in");
         navigate("/staff/checkin/searchbyid");
       }
+      if (!response.ok) {
+        alert("Reservation matched. Item: " + itemID + " checked in");
+        navigate("/staff/checkin/searchbyid");
+      }
     }
   };
 
