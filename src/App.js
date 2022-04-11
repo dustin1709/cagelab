@@ -105,7 +105,6 @@ function App() {
               />
             }
           />
-          <Route path="/staff/checkin/" element={<StaffCheckIn />} />
           <Route path="/staff/checkin/searchbyid" element={<SearchByID />} />
           <Route path="/staff/report" element={<StaffReport />} />
           <Route path="/staff/inventory/addItem" element={<AddItem />} />
